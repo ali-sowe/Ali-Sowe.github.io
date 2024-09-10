@@ -1,0 +1,39 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+body{
+    font-family: corbel;
+    min-height: 100vh;
+    color: #eee;
+    background-image: url('background-pic.jpg');  
+    background-size: cover;
+    background-position: center;
+    backdrop-filter: blur(3px) brightness(.4);
+}
+main{
+    height: 100%;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+main h1{
+    padding: 15px 0px;
+}
+main p{
+    margin: 0px auto 30px auto;
+    font-weight: 200;
+}
+main button{
+    padding: 14px 25px;
+    font-weight: 2000;
+    box-shadow: 5px 5px 10px black;
+    border-radius: 5px;
+    display: inline;
+    border: none;
+    margin-top: 20px;
+    background: orange;
+}
