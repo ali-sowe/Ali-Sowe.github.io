@@ -1,617 +1,1163 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Enrole. — Software, thoughtfully engineered.</title>
-<meta name="description" content="Enrole. is a Gambian software engineering company building mobile, web, and desktop products for Gambian schools, businesses, and institutions.">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@500&family=Space+Grotesk:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <title>Enrole. — Software, thoughtfully engineered.</title>
 
-<style>
-  /* ============================================
-     ENROLE DESIGN TOKENS — sourced from the Notion
-     brand palette + foundation-tokens doc. Do not
-     introduce ad-hoc colors, radii, or spacing —
-     reach for a token first.
-  ============================================ */
-  :root{
-    /* Color — dark theme (primary) */
-    --bg: #1A242B;
-    --surface: #151E24;
-    --surface-elevated: #141D22;
-    --bg-deep: #10181D;
-    --accent: #DFFF4F;
-    --accent-dim: #c7e647;
-    --text: #F0F4F7;
-    --text-muted: #94A3AE;
-    --border: #2A3842;
+  <meta
+    name="description"
+    content="Enrole. is a Gambian software engineering company building thoughtful digital products for schools, businesses, and institutions."
+  >
 
-    --success: #22C55E;
-    --warning: #F59E0B;
-    --error: #EF4444;
-    --info: #3B82F6;
+  <meta name="author" content="Enrole.">
+  <meta name="robots" content="index, follow">
+  <meta name="theme-color" content="#1A242B">
 
-    /* Gambia flag tricolor — signature motif, used sparingly */
-    --flag-red: #CE1126;
-    --flag-blue: #0C1C8C;
-    --flag-green: #3A7728;
+  <link rel="canonical" href="https://enrole.gm/">
 
-    /* Radius */
-    --radius-xs: 4px;
-    --radius-sm: 8px;
-    --radius-md: 12px;
-    --radius-lg: 16px;
-    --radius-xl: 20px;
-    --radius-full: 9999px;
+  <!-- Open Graph -->
+  <meta property="og:locale" content="en_GM">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Enrole.">
+  <meta property="og:title" content="Enrole. — Software, thoughtfully engineered.">
+  <meta
+    property="og:description"
+    content="Enrole. is a Gambian software engineering company building thoughtful digital products for schools, businesses, and institutions."
+  >
+  <meta property="og:url" content="https://enrole.gm/">
+  <meta
+    property="og:image"
+    content="https://enrole.gm/assets/enrole-og-image.jpg"
+  >
+  <meta
+    property="og:image:secure_url"
+    content="https://enrole.gm/assets/enrole-og-image.jpg"
+  >
+  <meta property="og:image:type" content="image/jpeg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta
+    property="og:image:alt"
+    content="Enrole. — Gambian software engineering company"
+  >
 
-    /* Spacing (4px scale) */
-    --space-1: 4px;
-    --space-2: 8px;
-    --space-3: 12px;
-    --space-4: 16px;
-    --space-5: 24px;
-    --space-6: 32px;
-    --space-7: 48px;
-    --space-8: 64px;
-    --space-9: 96px;
+  <!-- Social preview -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Enrole. — Software, thoughtfully engineered.">
+  <meta
+    name="twitter:description"
+    content="Enrole. is a Gambian software engineering company building thoughtful digital products for schools, businesses, and institutions."
+  >
+  <meta
+    name="twitter:image"
+    content="https://enrole.gm/assets/enrole-og-image.jpg"
+  >
+  <meta
+    name="twitter:image:alt"
+    content="Enrole. — Gambian software engineering company"
+  >
 
-    --font-logo: 'Inter', sans-serif;      /* Locked — wordmark only, nowhere else */
-    --font-display: 'Space Grotesk', sans-serif;
-    --font-body: 'Manrope', sans-serif;
-    --font-mono: 'IBM Plex Mono', monospace;
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-    --max-width: 1120px;
-  }
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@500&family=Space+Grotesk:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500&display=swap"
+    rel="stylesheet"
+  >
 
-  *, *::before, *::after{ box-sizing: border-box; }
-  html{ scroll-behavior: smooth; }
-  @media (prefers-reduced-motion: reduce){
-    html{ scroll-behavior: auto; }
-    *, *::before, *::after{ animation-duration: 0.001ms !important; animation-iteration-count: 1 !important; transition-duration: 0.001ms !important; scroll-behavior: auto !important; }
-  }
+  <style>
+    /* =========================================
+       ENROLE DESIGN TOKENS
+    ========================================= */
 
-  body{
-    margin: 0;
-    background: var(--bg);
-    color: var(--text);
-    font-family: var(--font-body);
-    font-size: 16px;
-    line-height: 1.6;
-    -webkit-font-smoothing: antialiased;
-  }
+    :root{
+      --bg: #1A242B;
+      --surface: #151E24;
+      --surface-elevated: #141D22;
+      --bg-deep: #10181D;
 
-  a{ color: inherit; text-decoration: none; }
-  ul{ list-style: none; margin: 0; padding: 0; }
-  img{ max-width: 100%; display: block; }
+      --accent: #DFFF4F;
+      --accent-dim: #c7e647;
 
-  .wrap{
-    max-width: var(--max-width);
-    margin: 0 auto;
-    padding: 0 var(--space-6);
-  }
+      --text: #F0F4F7;
+      --text-muted: #94A3AE;
+      --border: #2A3842;
 
-  .eyebrow{
-    font-family: var(--font-mono);
-    font-size: 12px;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: var(--accent);
-    margin: 0 0 var(--space-4);
-  }
+      --success: #22C55E;
+      --warning: #F59E0B;
+      --info: #3B82F6;
 
-  /* Signature motif: the flag rule — a thin tricolor line,
-     used only at hero-close and footer, never decoratively repeated. */
-  .flag-rule{
-    height: 3px;
-    width: 100%;
-    background: linear-gradient(
-      90deg,
-      var(--flag-red) 0 32%,
-      var(--text) 32% 34%,
-      var(--flag-blue) 34% 66%,
-      var(--text) 66% 68%,
-      var(--flag-green) 68% 100%
-    );
-    opacity: 0.9;
-  }
+      --flag-red: #CE1126;
+      --flag-blue: #0C1C8C;
+      --flag-green: #3A7728;
 
-  /* ---------- Nav ---------- */
-  .nav{
-    position: sticky;
-    top: 0;
-    z-index: 40;
-    background: rgba(26, 36, 43, 0.85);
-    backdrop-filter: blur(10px);
-    border-bottom: 1px solid var(--border);
-  }
-  .nav-inner{
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: var(--space-4) var(--space-6);
-    max-width: var(--max-width);
-    margin: 0 auto;
-  }
-  .wordmark{
-    font-family: var(--font-logo);
-    font-weight: 500;
-    font-size: 20px;
-    letter-spacing: -0.04em;
-  }
-  .wordmark .dot{ color: var(--accent); }
-  .nav-links{
-    display: flex;
-    align-items: center;
-    gap: var(--space-6);
-    font-size: 14px;
-    color: var(--text-muted);
-  }
-  .nav-links a:hover{ color: var(--text); }
-  .nav-cta{
-    color: var(--bg) !important;
-    background: var(--accent);
-    padding: var(--space-2) var(--space-4);
-    border-radius: var(--radius-sm);
-    font-weight: 600;
-    transition: transform 0.15s ease, background 0.15s ease;
-  }
-  .nav-cta:hover{ background: var(--accent-dim); transform: translateY(-1px); }
-  .nav-toggle{
-    display: none;
-    background: none;
-    border: 1px solid var(--border);
-    border-radius: var(--radius-sm);
-    color: var(--text);
-    width: 40px;
-    height: 40px;
-    font-size: 18px;
-    cursor: pointer;
-  }
+      --radius-xs: 4px;
+      --radius-sm: 8px;
+      --radius-md: 12px;
+      --radius-lg: 16px;
+      --radius-xl: 20px;
+      --radius-full: 9999px;
 
-  @media (max-width: 760px){
-    .nav-links{
-      position: absolute;
-      top: 100%;
-      left: 0;
-      right: 0;
-      background: var(--surface);
-      border-bottom: 1px solid var(--border);
-      flex-direction: column;
-      align-items: flex-start;
-      gap: var(--space-4);
-      padding: var(--space-5) var(--space-6);
-      display: none;
+      --space-1: 4px;
+      --space-2: 8px;
+      --space-3: 12px;
+      --space-4: 16px;
+      --space-5: 24px;
+      --space-6: 32px;
+      --space-7: 48px;
+      --space-8: 64px;
+      --space-9: 96px;
+
+      --font-logo: 'Inter', sans-serif;
+      --font-display: 'Space Grotesk', sans-serif;
+      --font-body: 'Manrope', sans-serif;
+      --font-mono: 'IBM Plex Mono', monospace;
+
+      --max-width: 1120px;
     }
-    .nav-links.open{ display: flex; }
-    .nav-toggle{ display: block; }
-  }
 
-  /* ---------- Hero ---------- */
-  .hero{
-    padding: var(--space-9) var(--space-6) var(--space-8);
-    max-width: var(--max-width);
-    margin: 0 auto;
-  }
-  .hero h1{
-    font-family: var(--font-display);
-    font-weight: 700;
-    font-size: clamp(40px, 7vw, 76px);
-    line-height: 1.04;
-    letter-spacing: -0.02em;
-    margin: 0 0 var(--space-5);
-    max-width: 16ch;
-  }
-  .hero-sub{
-    font-size: clamp(16px, 2vw, 19px);
-    color: var(--text-muted);
-    max-width: 56ch;
-    margin: 0 0 var(--space-7);
-  }
-  .hero-actions{
-    display: flex;
-    flex-wrap: wrap;
-    gap: var(--space-4);
-  }
-  .btn{
-    display: inline-flex;
-    align-items: center;
-    gap: var(--space-2);
-    padding: var(--space-3) var(--space-6);
-    border-radius: var(--radius-sm);
-    font-weight: 600;
-    font-size: 15px;
-    transition: transform 0.15s ease, background 0.15s ease, border-color 0.15s ease;
-    border: 1px solid transparent;
-  }
-  .btn-primary{ background: var(--accent); color: var(--bg-deep); }
-  .btn-primary:hover{ background: var(--accent-dim); transform: translateY(-1px); }
-  .btn-ghost{ border-color: var(--border); color: var(--text); }
-  .btn-ghost:hover{ border-color: var(--text-muted); }
+    /* =========================================
+       RESET
+    ========================================= */
 
-  .hero-fade{
-    opacity: 0;
-    transform: translateY(14px);
-    animation: heroIn 0.7s ease forwards;
-  }
-  .hero-fade.d2{ animation-delay: 0.1s; }
-  .hero-fade.d3{ animation-delay: 0.2s; }
-  @keyframes heroIn{ to{ opacity: 1; transform: translateY(0); } }
+    *,
+    *::before,
+    *::after{
+      box-sizing: border-box;
+    }
 
-  /* ---------- Sections (generic) ---------- */
-  section{ padding: var(--space-9) 0; }
-  section.tight{ padding: var(--space-8) 0; }
-  h2{
-    font-family: var(--font-display);
-    font-weight: 600;
-    font-size: clamp(28px, 3.6vw, 40px);
-    letter-spacing: -0.01em;
-    margin: 0 0 var(--space-5);
-  }
+    html{
+      scroll-behavior: smooth;
+    }
 
-  .reveal{
-    opacity: 0;
-    transform: translateY(18px);
-    transition: opacity 0.6s ease, transform 0.6s ease;
-  }
-  .reveal.is-visible{ opacity: 1; transform: translateY(0); }
+    @media (prefers-reduced-motion: reduce){
+      html{
+        scroll-behavior: auto;
+      }
 
-  /* ---------- Build / Don't build ---------- */
-  .build-grid{
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: var(--space-5);
-  }
-  @media (max-width: 720px){ .build-grid{ grid-template-columns: 1fr; } }
+      *,
+      *::before,
+      *::after{
+        animation-duration: 0.001ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.001ms !important;
+        scroll-behavior: auto !important;
+      }
+    }
 
-  .build-col{
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: var(--radius-md);
-    padding: var(--space-6);
-  }
-  .col-label{
-    font-family: var(--font-mono);
-    font-size: 12px;
-    letter-spacing: 0.1em;
-    margin: 0 0 var(--space-5);
-  }
-  .build-yes .col-label{ color: var(--success); }
-  .build-no .col-label{ color: var(--text-muted); }
-  .build-col ul{ display: flex; flex-direction: column; gap: var(--space-4); }
-  .build-col li{
-    display: flex;
-    gap: var(--space-3);
-    font-size: 15px;
-    color: var(--text);
-  }
-  .build-col li::before{
-    font-family: var(--font-mono);
-    flex-shrink: 0;
-    width: 18px;
-  }
-  .build-yes li::before{ content: '✓'; color: var(--success); }
-  .build-no li::before{ content: '×'; color: var(--text-muted); }
-  .build-no li{ color: var(--text-muted); }
+    body{
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--font-body);
+      font-size: 16px;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
 
-  /* ---------- Product spotlight ---------- */
-  .product-card{
-    background: var(--surface-elevated);
-    border: 1px solid var(--border);
-    border-radius: var(--radius-lg);
-    padding: var(--space-7);
-  }
-  .badge{
-    display: inline-flex;
-    align-items: center;
-    gap: var(--space-2);
-    font-family: var(--font-mono);
-    font-size: 12px;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: var(--warning);
-    background: rgba(245, 158, 11, 0.1);
-    border: 1px solid rgba(245, 158, 11, 0.3);
-    border-radius: var(--radius-full);
-    padding: var(--space-1) var(--space-3);
-    margin-bottom: var(--space-5);
-  }
-  .badge::before{
-    content: '';
-    width: 6px;
-    height: 6px;
-    border-radius: var(--radius-full);
-    background: var(--warning);
-  }
-  .badge-client{
-    color: var(--info);
-    background: rgba(59, 130, 246, 0.1);
-    border-color: rgba(59, 130, 246, 0.3);
-  }
-  .badge-client::before{ background: var(--info); }
-  .product-card h2{ margin-bottom: var(--space-4); }
-  .product-card p{
-    color: var(--text-muted);
-    max-width: 62ch;
-    margin: 0 0 var(--space-6);
-    font-size: 16px;
-  }
-  .product-meta{
-    display: flex;
-    flex-wrap: wrap;
-    gap: var(--space-7);
-    border-top: 1px solid var(--border);
-    padding-top: var(--space-5);
-  }
-  .meta-label{
-    display: block;
-    font-family: var(--font-mono);
-    font-size: 11px;
-    letter-spacing: 0.1em;
-    color: var(--text-muted);
-    margin-bottom: var(--space-1);
-  }
-  .meta-value{ font-size: 15px; font-weight: 600; }
+    a{
+      color: inherit;
+      text-decoration: none;
+    }
 
-  /* ---------- Brand promise ---------- */
-  .promise{
-    background: var(--bg-deep);
-    text-align: center;
-  }
-  .promise blockquote{
-    margin: 0 auto;
-    max-width: 20ch;
-    font-family: var(--font-display);
-    font-weight: 600;
-    font-size: clamp(26px, 4vw, 42px);
-    line-height: 1.25;
-    letter-spacing: -0.01em;
-  }
-  .promise blockquote span{ color: var(--accent); }
+    ul{
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
 
-  /* ---------- Vision ---------- */
-  .vision-text{
-    font-size: clamp(18px, 2.4vw, 24px);
-    line-height: 1.5;
-    max-width: 42ch;
-    color: var(--text);
-    font-weight: 500;
-  }
+    img{
+      max-width: 100%;
+      display: block;
+    }
 
-  /* ---------- Footer ---------- */
-  footer{
-    background: var(--surface);
-    padding-top: 0;
-  }
-  .footer-inner{
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    align-items: flex-start;
-    gap: var(--space-6);
-    padding: var(--space-8) 0 var(--space-6);
-  }
-  .footer-tagline{
-    color: var(--text-muted);
-    margin-top: var(--space-2);
-    font-size: 14px;
-  }
-  .footer-links{
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-    gap: var(--space-4);
-  }
-  .footer-links a[href^="mailto"]{
-    font-family: var(--font-mono);
-    font-size: 14px;
-    color: var(--accent);
-  }
-  .socials{ display: flex; gap: var(--space-4); flex-wrap: wrap; justify-content: flex-end; }
-  .socials a{ font-size: 13px; color: var(--text-muted); }
-  .socials a:hover{ color: var(--text); }
-  .copyright{
-    font-size: 12px;
-    color: var(--text-muted);
-    padding: var(--space-5) 0;
-    border-top: 1px solid var(--border);
-  }
+    button{
+      font: inherit;
+    }
 
-  @media (max-width: 600px){
-    .footer-inner{ flex-direction: column; }
-    .footer-links{ align-items: flex-start; }
-    .socials{ justify-content: flex-start; }
-  }
-</style>
+    .wrap{
+      width: 100%;
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 0 var(--space-6);
+    }
+
+    /* =========================================
+       TYPOGRAPHY
+    ========================================= */
+
+    .eyebrow{
+      margin: 0 0 var(--space-4);
+      color: var(--accent);
+      font-family: var(--font-mono);
+      font-size: 12px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    h1,
+    h2,
+    p{
+      margin-top: 0;
+    }
+
+    h2{
+      margin-bottom: var(--space-5);
+      font-family: var(--font-display);
+      font-size: clamp(28px, 3.6vw, 40px);
+      font-weight: 600;
+      letter-spacing: -0.01em;
+      line-height: 1.15;
+    }
+
+    /* =========================================
+       SIGNATURE FLAG RULE
+    ========================================= */
+
+    .flag-rule{
+      width: 100%;
+      height: 3px;
+      background: linear-gradient(
+        90deg,
+        var(--flag-red) 0 32%,
+        var(--text) 32% 34%,
+        var(--flag-blue) 34% 66%,
+        var(--text) 66% 68%,
+        var(--flag-green) 68% 100%
+      );
+      opacity: 0.9;
+    }
+
+    /* =========================================
+       NAVIGATION
+    ========================================= */
+
+    .nav{
+      position: sticky;
+      top: 0;
+      z-index: 40;
+      background: rgba(26, 36, 43, 0.86);
+      border-bottom: 1px solid var(--border);
+      backdrop-filter: blur(10px);
+    }
+
+    .nav-inner{
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: var(--space-4) var(--space-6);
+    }
+
+    .wordmark{
+      font-family: var(--font-logo);
+      font-size: 20px;
+      font-weight: 500;
+      letter-spacing: -0.04em;
+    }
+
+    .wordmark .dot{
+      color: var(--accent);
+    }
+
+    .nav-links{
+      display: flex;
+      align-items: center;
+      gap: var(--space-6);
+      color: var(--text-muted);
+      font-size: 14px;
+    }
+
+    .nav-links a{
+      transition: color 0.15s ease;
+    }
+
+    .nav-links a:hover{
+      color: var(--text);
+    }
+
+    .nav-cta{
+      color: var(--bg) !important;
+      background: var(--accent);
+      border-radius: var(--radius-sm);
+      padding: var(--space-2) var(--space-4);
+      font-weight: 700;
+      transition: background 0.15s ease, transform 0.15s ease;
+    }
+
+    .nav-cta:hover{
+      background: var(--accent-dim);
+      transform: translateY(-1px);
+    }
+
+    .nav-toggle{
+      display: none;
+      width: 40px;
+      height: 40px;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      background: transparent;
+      color: var(--text);
+      cursor: pointer;
+      font-size: 18px;
+    }
+
+    @media (max-width: 760px){
+      .nav-links{
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        display: none;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: var(--space-4);
+        padding: var(--space-5) var(--space-6);
+        background: var(--surface);
+        border-bottom: 1px solid var(--border);
+      }
+
+      .nav-links.open{
+        display: flex;
+      }
+
+      .nav-toggle{
+        display: block;
+      }
+    }
+
+    /* =========================================
+       HERO
+    ========================================= */
+
+    .hero{
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: var(--space-9) var(--space-6) var(--space-8);
+    }
+
+    .hero h1{
+      max-width: 16ch;
+      margin: 0 0 var(--space-5);
+      font-family: var(--font-display);
+      font-size: clamp(40px, 7vw, 76px);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      line-height: 1.04;
+    }
+
+    .hero-sub{
+      max-width: 58ch;
+      margin: 0 0 var(--space-7);
+      color: var(--text-muted);
+      font-size: clamp(16px, 2vw, 19px);
+    }
+
+    .hero-actions{
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-4);
+    }
+
+    .btn{
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-2);
+      border: 1px solid transparent;
+      border-radius: var(--radius-sm);
+      padding: var(--space-3) var(--space-6);
+      font-size: 15px;
+      font-weight: 700;
+      transition:
+        background 0.15s ease,
+        border-color 0.15s ease,
+        transform 0.15s ease;
+    }
+
+    .btn-primary{
+      background: var(--accent);
+      color: var(--bg-deep);
+    }
+
+    .btn-primary:hover{
+      background: var(--accent-dim);
+      transform: translateY(-1px);
+    }
+
+    .btn-ghost{
+      border-color: var(--border);
+      color: var(--text);
+    }
+
+    .btn-ghost:hover{
+      border-color: var(--text-muted);
+      transform: translateY(-1px);
+    }
+
+    .hero-fade{
+      opacity: 0;
+      transform: translateY(14px);
+      animation: heroIn 0.7s ease forwards;
+    }
+
+    .hero-fade.d2{
+      animation-delay: 0.1s;
+    }
+
+    .hero-fade.d3{
+      animation-delay: 0.2s;
+    }
+
+    @keyframes heroIn{
+      to{
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* =========================================
+       SECTIONS
+    ========================================= */
+
+    section{
+      padding: var(--space-9) 0;
+    }
+
+    section.tight{
+      padding: var(--space-8) 0;
+    }
+
+    .reveal{
+      opacity: 0;
+      transform: translateY(18px);
+      transition:
+        opacity 0.6s ease,
+        transform 0.6s ease;
+    }
+
+    .reveal.is-visible{
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* =========================================
+       BUILD / DON'T BUILD
+    ========================================= */
+
+    .build-grid{
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: var(--space-5);
+    }
+
+    .build-col{
+      padding: var(--space-6);
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+    }
+
+    .col-label{
+      margin: 0 0 var(--space-5);
+      font-family: var(--font-mono);
+      font-size: 12px;
+      letter-spacing: 0.1em;
+    }
+
+    .build-yes .col-label{
+      color: var(--success);
+    }
+
+    .build-no .col-label{
+      color: var(--text-muted);
+    }
+
+    .build-col ul{
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-4);
+    }
+
+    .build-col li{
+      display: flex;
+      gap: var(--space-3);
+      color: var(--text);
+      font-size: 15px;
+    }
+
+    .build-col li::before{
+      flex-shrink: 0;
+      width: 18px;
+      font-family: var(--font-mono);
+    }
+
+    .build-yes li::before{
+      content: '✓';
+      color: var(--success);
+    }
+
+    .build-no li{
+      color: var(--text-muted);
+    }
+
+    .build-no li::before{
+      content: '×';
+      color: var(--text-muted);
+    }
+
+    /* =========================================
+       PRODUCT CARDS
+    ========================================= */
+
+    .product-card{
+      padding: var(--space-7);
+      background: var(--surface-elevated);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+    }
+
+    .product-card + .product-card{
+      margin-top: var(--space-5);
+    }
+
+    .badge{
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-2);
+      margin-bottom: var(--space-5);
+      padding: var(--space-1) var(--space-3);
+      border: 1px solid rgba(245, 158, 11, 0.3);
+      border-radius: var(--radius-full);
+      background: rgba(245, 158, 11, 0.1);
+      color: var(--warning);
+      font-family: var(--font-mono);
+      font-size: 12px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .badge::before{
+      width: 6px;
+      height: 6px;
+      border-radius: var(--radius-full);
+      background: var(--warning);
+      content: '';
+    }
+
+    .badge-client{
+      border-color: rgba(59, 130, 246, 0.3);
+      background: rgba(59, 130, 246, 0.1);
+      color: var(--info);
+    }
+
+    .badge-client::before{
+      background: var(--info);
+    }
+
+    .product-card h2{
+      margin-bottom: var(--space-4);
+    }
+
+    .product-card p{
+      max-width: 68ch;
+      margin: 0 0 var(--space-6);
+      color: var(--text-muted);
+      font-size: 16px;
+    }
+
+    .product-meta{
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-7);
+      padding-top: var(--space-5);
+      border-top: 1px solid var(--border);
+    }
+
+    .meta-label{
+      display: block;
+      margin-bottom: var(--space-1);
+      color: var(--text-muted);
+      font-family: var(--font-mono);
+      font-size: 11px;
+      letter-spacing: 0.1em;
+    }
+
+    .meta-value{
+      font-size: 15px;
+      font-weight: 700;
+    }
+
+    /* =========================================
+       BRAND PROMISE
+    ========================================= */
+
+    .promise{
+      background: var(--bg-deep);
+      text-align: center;
+    }
+
+    .promise blockquote{
+      max-width: 20ch;
+      margin: 0 auto;
+      font-family: var(--font-display);
+      font-size: clamp(26px, 4vw, 42px);
+      font-weight: 600;
+      letter-spacing: -0.01em;
+      line-height: 1.25;
+    }
+
+    .promise blockquote span{
+      color: var(--accent);
+    }
+
+    /* =========================================
+       VISION
+    ========================================= */
+
+    .vision-text{
+      max-width: 42ch;
+      margin: 0;
+      color: var(--text);
+      font-size: clamp(18px, 2.4vw, 24px);
+      font-weight: 500;
+      line-height: 1.5;
+    }
+
+    /* =========================================
+       FOOTER
+    ========================================= */
+
+    footer{
+      background: var(--surface);
+    }
+
+    .footer-inner{
+      display: flex;
+      flex-wrap: wrap;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: var(--space-6);
+      padding: var(--space-8) 0 var(--space-6);
+    }
+
+    .footer-tagline{
+      margin: var(--space-2) 0 0;
+      color: var(--text-muted);
+      font-size: 14px;
+    }
+
+    .footer-links{
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: var(--space-4);
+    }
+
+    .footer-links > a[href^="mailto"]{
+      color: var(--accent);
+      font-family: var(--font-mono);
+      font-size: 14px;
+    }
+
+    .footer-links > a:not([href^="mailto"]){
+      color: var(--text-muted);
+      font-size: 14px;
+    }
+
+    .footer-links > a:hover,
+    .socials a:hover{
+      color: var(--accent);
+    }
+
+    .socials{
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+      gap: var(--space-4);
+    }
+
+    .socials a{
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-2);
+      color: var(--text-muted);
+      font-size: 13px;
+      transition: color 0.15s ease, transform 0.15s ease;
+    }
+
+    .socials a:hover{
+      transform: translateY(-1px);
+    }
+
+    .socials .si{
+      display: inline-block;
+      width: 16px;
+      height: 16px;
+      background-color: currentColor;
+      mask-position: center;
+      mask-repeat: no-repeat;
+      mask-size: contain;
+      -webkit-mask-position: center;
+      -webkit-mask-repeat: no-repeat;
+      -webkit-mask-size: contain;
+    }
+
+    .si-instagram{
+      mask-image: url("https://cdn.jsdelivr.net/npm/simple-icons@v13.21.0/icons/instagram.svg");
+      -webkit-mask-image: url("https://cdn.jsdelivr.net/npm/simple-icons@v13.21.0/icons/instagram.svg");
+    }
+
+    .si-threads{
+      mask-image: url("https://cdn.jsdelivr.net/npm/simple-icons@v13.21.0/icons/threads.svg");
+      -webkit-mask-image: url("https://cdn.jsdelivr.net/npm/simple-icons@v13.21.0/icons/threads.svg");
+    }
+
+    .si-facebook{
+      mask-image: url("https://cdn.jsdelivr.net/npm/simple-icons@v13.21.0/icons/facebook.svg");
+      -webkit-mask-image: url("https://cdn.jsdelivr.net/npm/simple-icons@v13.21.0/icons/facebook.svg");
+    }
+
+    .si-linkedin{
+      mask-image: url("https://cdn.jsdelivr.net/npm/simple-icons@v13.21.0/icons/linkedin.svg");
+      -webkit-mask-image: url("https://cdn.jsdelivr.net/npm/simple-icons@v13.21.0/icons/linkedin.svg");
+    }
+
+    .si-github{
+      mask-image: url("https://cdn.jsdelivr.net/npm/simple-icons@v13.21.0/icons/github.svg");
+      -webkit-mask-image: url("https://cdn.jsdelivr.net/npm/simple-icons@v13.21.0/icons/github.svg");
+    }
+
+    .copyright{
+      margin: 0;
+      padding: var(--space-5) 0;
+      border-top: 1px solid var(--border);
+      color: var(--text-muted);
+      font-size: 12px;
+    }
+
+    /* =========================================
+       RESPONSIVE
+    ========================================= */
+
+    @media (max-width: 720px){
+      .build-grid{
+        grid-template-columns: 1fr;
+      }
+
+      .product-card{
+        padding: var(--space-6);
+      }
+
+      .product-meta{
+        flex-direction: column;
+        gap: var(--space-4);
+      }
+    }
+
+    @media (max-width: 600px){
+      .wrap{
+        padding: 0 var(--space-5);
+      }
+
+      .hero{
+        padding-right: var(--space-5);
+        padding-left: var(--space-5);
+      }
+
+      .footer-inner{
+        flex-direction: column;
+      }
+
+      .footer-links{
+        align-items: flex-start;
+      }
+
+      .socials{
+        justify-content: flex-start;
+        gap: var(--space-3) var(--space-4);
+      }
+    }
+  </style>
 </head>
+
 <body>
 
-<header class="nav">
-  <div class="nav-inner">
-    <a class="wordmark" href="#top">Enrole<span class="dot">.</span></a>
-    <nav class="nav-links" id="navLinks">
-      <a href="#build">What we build</a>
-      <a href="#product">Product</a>
-      <a href="#beglitch">BeGlitch</a>
-      <a href="#vision">Vision</a>
-      <a href="#contact" class="nav-cta">Get in touch</a>
-    </nav>
-    <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false">☰</button>
-  </div>
-</header>
+  <header class="nav">
+    <div class="nav-inner">
+      <a class="wordmark" href="#top" aria-label="Enrole. homepage">
+        Enrole<span class="dot">.</span>
+      </a>
 
-<main>
-  <section class="hero" id="top">
-    <p class="eyebrow hero-fade">Gambian-built · Gambian-owned</p>
-    <h1 class="hero-fade d2">Software, thoughtfully<br>engineered.</h1>
-    <p class="hero-sub hero-fade d3">
-      Enrole. is a Gambian software engineering company designing mobile, web, and desktop
-      products that help Gambian schools, businesses, and institutions run faster, smarter,
-      and at scale. We start by solving real problems at home, then take what works to the world.
-    </p>
-    <div class="hero-actions hero-fade d3">
-      <a href="#product" class="btn btn-primary">See our flagship product</a>
-      <a href="#contact" class="btn btn-ghost">Get in touch</a>
+      <nav class="nav-links" id="navLinks" aria-label="Main navigation">
+        <a href="#build">What we build</a>
+        <a href="#product">Products</a>
+        <a href="#work">Client work</a>
+        <a href="#vision">Vision</a>
+        <a href="#contact" class="nav-cta">Get in touch</a>
+      </nav>
+
+      <button
+        class="nav-toggle"
+        id="navToggle"
+        type="button"
+        aria-label="Open navigation menu"
+        aria-expanded="false"
+        aria-controls="navLinks"
+      >
+        ☰
+      </button>
     </div>
-  </section>
+  </header>
 
-  <div class="flag-rule" aria-hidden="true"></div>
+  <main>
 
-  <section class="tight" id="build">
-    <div class="wrap">
-      <p class="eyebrow reveal">How we work</p>
-      <h2 class="reveal">Product-minded, not project-minded.</h2>
-      <div class="build-grid reveal">
-        <div class="build-col build-yes">
-          <p class="col-label">WE BUILD</p>
-          <ul>
-            <li>Reusable, scalable software that solves real Gambian operational problems</li>
-            <li>Clean, maintainable codebases on modern, cloud-ready stacks</li>
-            <li>Products with recurring value, not one-off custom jobs</li>
-          </ul>
-        </div>
-        <div class="build-col build-no">
-          <p class="col-label">WE DON'T</p>
-          <ul>
-            <li>Sell "website design" as a service</li>
-            <li>Take freelance gigs that don't move us toward our roadmap</li>
-            <li>Chase trends without a clear problem and a real customer</li>
-          </ul>
+    <!-- Hero -->
+    <section class="hero" id="top">
+      <p class="eyebrow hero-fade">
+        Gambian-built · Gambian-owned
+      </p>
+
+      <h1 class="hero-fade d2">
+        Software for the work that matters.
+      </h1>
+
+      <p class="hero-sub hero-fade d3">
+        Enrole. is a Gambian software engineering company building thoughtful
+        digital products for schools, businesses, and institutions. We start
+        with real problems at home and build toward solutions that can serve
+        the world.
+      </p>
+
+      <div class="hero-actions hero-fade d3">
+        <a href="#product" class="btn btn-primary">
+          Explore our products
+        </a>
+
+        <a href="#contact" class="btn btn-ghost">
+          Start a conversation
+        </a>
+      </div>
+    </section>
+
+    <div class="flag-rule" aria-hidden="true"></div>
+
+    <!-- How we work -->
+    <section class="tight" id="build">
+      <div class="wrap">
+        <p class="eyebrow reveal">How we work</p>
+
+        <h2 class="reveal">
+          Product-minded, not project-minded.
+        </h2>
+
+        <div class="build-grid reveal">
+          <div class="build-col build-yes">
+            <p class="col-label">WE BUILD</p>
+
+            <ul>
+              <li>
+                Products that solve real operational problems in The Gambia
+              </li>
+              <li>
+                Reusable systems designed to improve over time
+              </li>
+              <li>
+                Clean, maintainable code built on modern, cloud-ready stacks
+              </li>
+            </ul>
+          </div>
+
+          <div class="build-col build-no">
+            <p class="col-label">WE DON'T</p>
+
+            <ul>
+              <li>
+                Sell website design as our core business
+              </li>
+              <li>
+                Take disconnected freelance work without a strategic fit
+              </li>
+              <li>
+                Build features without a clear problem or real user
+              </li>
+            </ul>
+          </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <section id="product">
-    <div class="wrap">
-      <div class="product-card reveal">
-        <span class="badge">In development</span>
-        <h2>School ERP</h2>
-        <p>
-          A complete school management system built for Gambian schools — students, academics,
-          fees, and communication, in one place. It's our first flagship product, and the proof
-          point for everything Enrole. stands for.
+    <!-- Enrole product -->
+    <section id="product">
+      <div class="wrap">
+        <p class="eyebrow reveal">Our product</p>
+
+        <div class="product-card reveal">
+          <span class="badge">
+            Enrole. product · In development
+          </span>
+
+          <h2>
+            School ERP
+          </h2>
+
+          <p>
+            A complete school management system built for Gambian schools—
+            covering students, academics, fees, communication, and everyday
+            administration in one place. This is Enrole.’s first flagship
+            product and the foundation of our long-term product roadmap.
+          </p>
+
+          <div class="product-meta">
+            <div>
+              <span class="meta-label">FOR</span>
+              <span class="meta-value">Gambian schools</span>
+            </div>
+
+            <div>
+              <span class="meta-label">STATUS</span>
+              <span class="meta-value">Flagship product — building now</span>
+            </div>
+
+            <div>
+              <span class="meta-label">BUILT BY</span>
+              <span class="meta-value">Enrole.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Client work -->
+    <section id="work">
+      <div class="wrap">
+        <p class="eyebrow reveal">Client work</p>
+
+        <div class="product-card reveal">
+          <span class="badge badge-client">
+            Client project · In development
+          </span>
+
+          <h2>
+            BeGlitch enrolment platform
+          </h2>
+
+          <p>
+            A complete digital enrolment and applicant-management platform
+            built by Enrole. for <strong>BeGlitch</strong>, a Gambian
+            multimedia and creative-technology training organisation. The
+            platform includes a guided public application, secure admin
+            dashboard, candidate portal, announcements, email workflows,
+            and internal messaging.
+          </p>
+
+          <div class="product-meta">
+            <div>
+              <span class="meta-label">CLIENT</span>
+              <span class="meta-value">BeGlitch</span>
+            </div>
+
+            <div>
+              <span class="meta-label">STATUS</span>
+              <span class="meta-value">
+                Backend built — frontend integration underway
+              </span>
+            </div>
+
+            <div>
+              <span class="meta-label">BUILT BY</span>
+              <span class="meta-value">Enrole.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Brand promise -->
+    <section class="promise">
+      <div class="wrap reveal">
+        <blockquote>
+          “When it's built by
+          <span>Enrole.</span>
+          , it's built to last.”
+        </blockquote>
+      </div>
+    </section>
+
+    <!-- Vision -->
+    <section id="vision">
+      <div class="wrap">
+        <p class="eyebrow reveal">Vision</p>
+
+        <p class="vision-text reveal">
+          A Gambia where every school, business, and public institution
+          operates at the full level of today’s technology—using software
+          built by Gambians, for Gambians, and trusted worldwide.
         </p>
-        <div class="product-meta">
-          <div>
-            <span class="meta-label">FOR</span>
-            <span class="meta-value">Gambian schools</span>
-          </div>
-          <div>
-            <span class="meta-label">STATUS</span>
-            <span class="meta-value">Flagship product — building now</span>
-          </div>
-          <div>
-            <span class="meta-label">BUILT BY</span>
-            <span class="meta-value">Enrole.</span>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer id="contact">
+    <div class="flag-rule" aria-hidden="true"></div>
+
+    <div class="wrap">
+      <div class="footer-inner">
+        <div>
+          <p class="wordmark">
+            Enrole<span class="dot">.</span>
+          </p>
+
+          <p class="footer-tagline">
+            The Gambia, taking tech forward.
+          </p>
+        </div>
+
+        <div class="footer-links">
+          <a href="mailto:enrole.gm@gmail.com">
+            enrole.gm@gmail.com
+          </a>
+
+          <a
+            href="https://wa.me/2207005974"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            WhatsApp: +220 7005974
+          </a>
+
+          <div
+            class="socials"
+            aria-label="Enrole. social media links"
+          >
+            <a
+              href="https://www.instagram.com/enrole.gm"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Enrole. on Instagram"
+            >
+              <span class="si si-instagram" aria-hidden="true"></span>
+              <span>Instagram</span>
+            </a>
+
+            <a
+              href="https://www.threads.com/@enrole.gm"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Enrole. on Threads"
+            >
+              <span class="si si-threads" aria-hidden="true"></span>
+              <span>Threads</span>
+            </a>
+
+            <a
+              href="https://www.facebook.com/people/Enrole/61592930902682/"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Enrole. on Facebook"
+            >
+              <span class="si si-facebook" aria-hidden="true"></span>
+              <span>Facebook</span>
+            </a>
+
+            <a
+              href="https://www.linkedin.com/in/enrole-gambia-1b54b5428"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Enrole. on LinkedIn"
+            >
+              <span class="si si-linkedin" aria-hidden="true"></span>
+              <span>LinkedIn</span>
+            </a>
+
+            <a
+              href="https://github.com/enrole-gm"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Enrole. on GitHub"
+            >
+              <span class="si si-github" aria-hidden="true"></span>
+              <span>GitHub</span>
+            </a>
           </div>
         </div>
       </div>
-    </div>
-  </section>
 
-  <section id="beglitch">
-    <div class="wrap">
-      <div class="product-card reveal">
-        <span class="badge badge-client">Client work · In development</span>
-        <h2>Enrole for BeGlitch</h2>
-        <p>
-          A complete digital enrolment and applicant-management platform built for
-          <strong>BeGlitch</strong>, a Gambian multimedia and creative-tech training organisation —
-          ahead of their September 2026 course intake. A guided multi-step public application,
-          a secure admin dashboard, and a candidate portal for status, announcements, and messaging.
-        </p>
-        <div class="product-meta">
-          <div>
-            <span class="meta-label">FOR</span>
-            <span class="meta-value">BeGlitch — September 2026 course</span>
-          </div>
-          <div>
-            <span class="meta-label">STATUS</span>
-            <span class="meta-value">Backend built — frontend integration underway</span>
-          </div>
-          <div>
-            <span class="meta-label">BUILT BY</span>
-            <span class="meta-value">Enrole.</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-    <div class="wrap reveal">
-      <blockquote>“When it's built by <span>Enrole.</span>, it's built to last.”</blockquote>
-    </div>
-  </section>
-
-  <section id="vision">
-    <div class="wrap">
-      <p class="eyebrow reveal">Vision</p>
-      <p class="vision-text reveal">
-        A Gambia where every school, business, and public institution operates at the full level
-        of today's technology — using software built by Gambians, for Gambians, and trusted worldwide.
+      <p class="copyright">
+        © 2026 Enrole. — Software, thoughtfully engineered.
       </p>
     </div>
-  </section>
-</main>
+  </footer>
 
-<footer id="contact">
-  <div class="flag-rule" aria-hidden="true"></div>
-  <div class="wrap">
-    <div class="footer-inner">
-      <div>
-        <p class="wordmark">Enrole<span class="dot">.</span></p>
-        <p class="footer-tagline">The Gambia, taking tech forward.</p>
-      </div>
-      <div class="footer-links">
-        <a href="mailto:enrole.gm@gmail.com">enrole.gm@gmail.com</a>
-        <a href="https://wa.me/2207005974" rel="noopener" target="_blank">WhatsApp: +220 7005974</a>
-        <!-- TODO: wire up the 5 social accounts -->
-        <div class="socials">
-          <a href="#" rel="noopener">Instagram</a>
-          <a href="#" rel="noopener">X</a>
-          <a href="#" rel="noopener">LinkedIn</a>
-          <a href="#" rel="noopener">Facebook</a>
-          <a href="#" rel="noopener">TikTok</a>
-        </div>
-      </div>
-    </div>
-    <p class="copyright">© 2026 Enrole. — Software, thoughtfully engineered.</p>
-  </div>
-</footer>
+  <script>
+    // Mobile navigation
+    var navToggle = document.getElementById('navToggle');
+    var navLinks = document.getElementById('navLinks');
 
-<script>
-  // Mobile nav toggle
-  var navToggle = document.getElementById('navToggle');
-  var navLinks = document.getElementById('navLinks');
-  navToggle.addEventListener('click', function () {
-    var open = navLinks.classList.toggle('open');
-    navToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
-  });
-  navLinks.querySelectorAll('a').forEach(function (link) {
-    link.addEventListener('click', function () {
-      navLinks.classList.remove('open');
-      navToggle.setAttribute('aria-expanded', 'false');
+    navToggle.addEventListener('click', function () {
+      var isOpen = navLinks.classList.toggle('open');
+
+      navToggle.setAttribute(
+        'aria-expanded',
+        isOpen ? 'true' : 'false'
+      );
+
+      navToggle.setAttribute(
+        'aria-label',
+        isOpen ? 'Close navigation menu' : 'Open navigation menu'
+      );
     });
-  });
 
-  // Scroll-reveal for sections
-  var prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  var revealEls = document.querySelectorAll('.reveal');
-  if (prefersReducedMotion || !('IntersectionObserver' in window)) {
-    revealEls.forEach(function (el) { el.classList.add('is-visible'); });
-  } else {
-    var observer = new IntersectionObserver(function (entries) {
-      entries.forEach(function (entry) {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('is-visible');
-          observer.unobserve(entry.target);
-        }
+    navLinks.querySelectorAll('a').forEach(function (link) {
+      link.addEventListener('click', function () {
+        navLinks.classList.remove('open');
+        navToggle.setAttribute('aria-expanded', 'false');
+        navToggle.setAttribute(
+          'aria-label',
+          'Open navigation menu'
+        );
       });
-    }, { threshold: 0.15 });
-    revealEls.forEach(function (el) { observer.observe(el); });
-  }
-</script>
+    });
+
+    // Scroll reveal
+    var prefersReducedMotion = window.matchMedia(
+      '(prefers-reduced-motion: reduce)'
+    ).matches;
+
+    var revealElements = document.querySelectorAll('.reveal');
+
+    if (
+      prefersReducedMotion ||
+      !('IntersectionObserver' in window)
+    ) {
+      revealElements.forEach(function (element) {
+        element.classList.add('is-visible');
+      });
+    } else {
+      var observer = new IntersectionObserver(
+        function (entries) {
+          entries.forEach(function (entry) {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('is-visible');
+              observer.unobserve(entry.target);
+            }
+          });
+        },
+        {
+          threshold: 0.15
+        }
+      );
+
+      revealElements.forEach(function (element) {
+        observer.observe(element);
+      });
+    }
+  </script>
+
 </body>
 </html>
