@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="dark">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,7 +10,6 @@
     name="description"
     content="Enrole. is a Gambian software engineering company building thoughtful digital products for schools, businesses, and institutions."
   >
-
   <meta name="author" content="Enrole.">
   <meta name="robots" content="index, follow">
   <meta name="theme-color" content="#1A242B">
@@ -214,7 +213,7 @@
     }
 
     /* =========================================
-       SIGNATURE FLAG RULE
+       FLAG RULE
     ========================================= */
 
     .flag-rule{
@@ -286,7 +285,9 @@
       border-radius: var(--radius-sm);
       padding: var(--space-2) var(--space-4);
       font-weight: 700;
-      transition: background 0.15s ease, transform 0.15s ease;
+      transition:
+        background 0.15s ease,
+        transform 0.15s ease;
     }
 
     .nav-cta:hover{
@@ -335,9 +336,68 @@
     ========================================= */
 
     .hero{
+      position: relative;
+      isolation: isolate;
+      overflow: hidden;
       max-width: var(--max-width);
       margin: 0 auto;
       padding: var(--space-9) var(--space-6) var(--space-8);
+    }
+
+    .hero::before,
+    .hero::after{
+      position: absolute;
+      z-index: -3;
+      width: 420px;
+      height: 420px;
+      border-radius: 50%;
+      pointer-events: none;
+      content: "";
+      filter: blur(90px);
+      opacity: 0.18;
+    }
+
+    .hero::before{
+      top: -180px;
+      right: -120px;
+      background: var(--accent);
+      animation: heroOrbOne 16s ease-in-out infinite alternate;
+    }
+
+    .hero::after{
+      bottom: -220px;
+      left: -160px;
+      background: var(--flag-blue);
+      animation: heroOrbTwo 20s ease-in-out infinite alternate;
+    }
+
+    .hero-grid{
+      position: absolute;
+      z-index: -2;
+      inset: 0;
+      pointer-events: none;
+      opacity: 0.18;
+      background-image:
+        linear-gradient(
+          rgba(240, 244, 247, 0.045) 1px,
+          transparent 1px
+        ),
+        linear-gradient(
+          90deg,
+          rgba(240, 244, 247, 0.045) 1px,
+          transparent 1px
+        );
+      background-size: 42px 42px;
+      mask-image: linear-gradient(
+        to bottom,
+        black,
+        transparent 80%
+      );
+      -webkit-mask-image: linear-gradient(
+        to bottom,
+        black,
+        transparent 80%
+      );
     }
 
     .hero h1{
@@ -412,11 +472,220 @@
       animation-delay: 0.2s;
     }
 
-    @keyframes heroIn{
-      to{
-        opacity: 1;
-        transform: translateY(0);
-      }
+    /* =========================================
+       HERO SYSTEM ILLUSTRATION
+    ========================================= */
+
+    .hero-visual{
+      position: relative;
+      width: min(100%, 620px);
+      min-height: 260px;
+      margin-top: var(--space-8);
+      margin-left: auto;
+    }
+
+    .system-card{
+      position: relative;
+      overflow: hidden;
+      width: min(100%, 520px);
+      margin-left: auto;
+      border: 1px solid rgba(223, 255, 79, 0.25);
+      border-radius: var(--radius-lg);
+      background:
+        linear-gradient(
+          135deg,
+          rgba(223, 255, 79, 0.08),
+          rgba(20, 29, 34, 0.96) 44%
+        ),
+        var(--surface-elevated);
+      box-shadow:
+        0 24px 80px rgba(0, 0, 0, 0.28),
+        0 0 70px rgba(223, 255, 79, 0.08);
+      transform: perspective(900px) rotateY(-8deg) rotateX(3deg);
+      animation: systemFloat 7s ease-in-out infinite;
+    }
+
+    .system-card::after{
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background: linear-gradient(
+        120deg,
+        transparent 20%,
+        rgba(255, 255, 255, 0.08) 45%,
+        transparent 65%
+      );
+      content: "";
+      transform: translateX(-100%);
+      animation: systemSweep 8s ease-in-out infinite;
+    }
+
+    .system-topbar{
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      padding: var(--space-4);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .system-dot{
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+    }
+
+    .system-dot-red{
+      background: #EF4444;
+    }
+
+    .system-dot-yellow{
+      background: #F59E0B;
+    }
+
+    .system-dot-green{
+      background: #22C55E;
+    }
+
+    .system-path{
+      margin-left: var(--space-3);
+      color: var(--text-muted);
+      font-family: var(--font-mono);
+      font-size: 11px;
+    }
+
+    .system-body{
+      display: grid;
+      grid-template-columns: 110px 1fr;
+      min-height: 190px;
+    }
+
+    .system-sidebar{
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-4);
+      padding: var(--space-5) var(--space-4);
+      border-right: 1px solid var(--border);
+    }
+
+    .side-line{
+      display: block;
+      width: 72px;
+      height: 7px;
+      border-radius: var(--radius-full);
+      background: var(--border);
+    }
+
+    .side-line.short{
+      width: 42px;
+    }
+
+    .side-line-active{
+      width: 82px;
+      background: var(--accent);
+      box-shadow: 0 0 18px rgba(223, 255, 79, 0.35);
+    }
+
+    .system-content{
+      padding: var(--space-6);
+    }
+
+    .content-label{
+      color: var(--accent);
+      font-family: var(--font-mono);
+      font-size: 10px;
+      letter-spacing: 0.12em;
+    }
+
+    .content-heading{
+      max-width: 12ch;
+      margin-top: var(--space-3);
+      color: var(--text);
+      font-family: var(--font-display);
+      font-size: clamp(22px, 4vw, 34px);
+      font-weight: 600;
+      line-height: 1.1;
+    }
+
+    .content-bars{
+      display: flex;
+      align-items: end;
+      gap: var(--space-2);
+      height: 50px;
+      margin-top: var(--space-5);
+    }
+
+    .content-bars span{
+      width: 16px;
+      border-radius: 4px 4px 0 0;
+      background: var(--accent);
+      opacity: 0.75;
+      animation: barPulse 3s ease-in-out infinite alternate;
+    }
+
+    .content-bars span:nth-child(1){
+      height: 35%;
+    }
+
+    .content-bars span:nth-child(2){
+      height: 70%;
+      animation-delay: 0.2s;
+    }
+
+    .content-bars span:nth-child(3){
+      height: 52%;
+      animation-delay: 0.4s;
+    }
+
+    .content-status{
+      display: flex;
+      align-items: center;
+      gap: var(--space-2);
+      margin-top: var(--space-5);
+      color: var(--text-muted);
+      font-family: var(--font-mono);
+      font-size: 11px;
+    }
+
+    .status-pulse{
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--success);
+      box-shadow: 0 0 0 5px rgba(34, 197, 94, 0.1);
+      animation: statusPulse 2s ease-in-out infinite;
+    }
+
+    .floating-chip{
+      position: absolute;
+      display: flex;
+      align-items: center;
+      gap: var(--space-2);
+      padding: var(--space-2) var(--space-3);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-full);
+      background: rgba(20, 29, 34, 0.9);
+      box-shadow: 0 14px 30px rgba(0, 0, 0, 0.2);
+      color: var(--text-muted);
+      font-family: var(--font-mono);
+      font-size: 11px;
+      backdrop-filter: blur(8px);
+    }
+
+    .chip-one{
+      top: 18px;
+      left: 0;
+      animation: chipFloatOne 6s ease-in-out infinite;
+    }
+
+    .chip-two{
+      right: 20px;
+      bottom: 0;
+      animation: chipFloatTwo 7s ease-in-out infinite;
+    }
+
+    .chip-check{
+      color: var(--accent);
+      font-size: 13px;
     }
 
     /* =========================================
@@ -545,7 +814,7 @@
       height: 6px;
       border-radius: var(--radius-full);
       background: var(--warning);
-      content: '';
+      content: "";
     }
 
     .badge-client{
@@ -592,7 +861,7 @@
     }
 
     /* =========================================
-       BRAND PROMISE
+       PROMISE
     ========================================= */
 
     .promise{
@@ -686,7 +955,9 @@
       gap: var(--space-2);
       color: var(--text-muted);
       font-size: 13px;
-      transition: color 0.15s ease, transform 0.15s ease;
+      transition:
+        color 0.15s ease,
+        transform 0.15s ease;
     }
 
     .socials a:hover{
@@ -740,6 +1011,93 @@
     }
 
     /* =========================================
+       ANIMATIONS
+    ========================================= */
+
+    @keyframes heroIn{
+      to{
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes heroOrbOne{
+      0%{
+        transform: translate3d(0, 0, 0) scale(1);
+      }
+
+      100%{
+        transform: translate3d(-80px, 70px, 0) scale(1.18);
+      }
+    }
+
+    @keyframes heroOrbTwo{
+      0%{
+        transform: translate3d(0, 0, 0) scale(1);
+      }
+
+      100%{
+        transform: translate3d(100px, -50px, 0) scale(1.2);
+      }
+    }
+
+    @keyframes systemFloat{
+      0%,
+      100%{
+        transform:
+          perspective(900px)
+          rotateY(-8deg)
+          rotateX(3deg)
+          translateY(0);
+      }
+
+      50%{
+        transform:
+          perspective(900px)
+          rotateY(-8deg)
+          rotateX(3deg)
+          translateY(-8px);
+      }
+    }
+
+    @keyframes systemSweep{
+      0%,
+      55%{
+        transform: translateX(-100%);
+      }
+
+      75%,
+      100%{
+        transform: translateX(100%);
+      }
+    }
+
+    @keyframes barPulse{
+      to{
+        opacity: 1;
+        transform: scaleY(1.15);
+      }
+    }
+
+    @keyframes statusPulse{
+      50%{
+        box-shadow: 0 0 0 8px rgba(34, 197, 94, 0.03);
+      }
+    }
+
+    @keyframes chipFloatOne{
+      50%{
+        transform: translateY(-8px);
+      }
+    }
+
+    @keyframes chipFloatTwo{
+      50%{
+        transform: translateY(7px);
+      }
+    }
+
+    /* =========================================
        RESPONSIVE
     ========================================= */
 
@@ -755,6 +1113,15 @@
       .product-meta{
         flex-direction: column;
         gap: var(--space-4);
+      }
+
+      .system-card{
+        width: 92%;
+        transform: none;
+      }
+
+      .system-card:hover{
+        transform: none;
       }
     }
 
@@ -780,6 +1147,51 @@
         justify-content: flex-start;
         gap: var(--space-3) var(--space-4);
       }
+
+      .hero-visual{
+        min-height: 230px;
+      }
+
+      .chip-one{
+        left: -4px;
+      }
+
+      .chip-two{
+        right: 0;
+      }
+
+      .system-body{
+        grid-template-columns: 82px 1fr;
+      }
+
+      .system-sidebar{
+        padding-right: var(--space-3);
+        padding-left: var(--space-3);
+      }
+
+      .side-line{
+        width: 54px;
+      }
+
+      .side-line-active{
+        width: 62px;
+      }
+
+      .system-content{
+        padding: var(--space-5);
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce){
+      .hero::before,
+      .hero::after,
+      .system-card,
+      .system-card::after,
+      .content-bars span,
+      .status-pulse,
+      .floating-chip{
+        animation: none;
+      }
     }
   </style>
 </head>
@@ -788,16 +1200,29 @@
 
   <header class="nav">
     <div class="nav-inner">
-      <a class="wordmark" href="#top" aria-label="Enrole. homepage">
+      <a
+        class="wordmark"
+        href="#top"
+        aria-label="Enrole. homepage"
+      >
         Enrole<span class="dot">.</span>
       </a>
 
-      <nav class="nav-links" id="navLinks" aria-label="Main navigation">
+      <nav
+        class="nav-links"
+        id="navLinks"
+        aria-label="Main navigation"
+      >
         <a href="#build">What we build</a>
         <a href="#product">Products</a>
         <a href="#work">Client work</a>
         <a href="#vision">Vision</a>
-        <a href="#contact" class="nav-cta">Get in touch</a>
+        <a
+          href="#contact"
+          class="nav-cta"
+        >
+          Get in touch
+        </a>
       </nav>
 
       <button
@@ -816,7 +1241,15 @@
   <main>
 
     <!-- Hero -->
-    <section class="hero" id="top">
+    <section
+      class="hero"
+      id="top"
+    >
+      <div
+        class="hero-grid"
+        aria-hidden="true"
+      ></div>
+
       <p class="eyebrow hero-fade">
         Gambian-built · Gambian-owned
       </p>
@@ -833,22 +1266,91 @@
       </p>
 
       <div class="hero-actions hero-fade d3">
-        <a href="#product" class="btn btn-primary">
+        <a
+          href="#product"
+          class="btn btn-primary"
+        >
           Explore our products
         </a>
 
-        <a href="#contact" class="btn btn-ghost">
+        <a
+          href="#contact"
+          class="btn btn-ghost"
+        >
           Start a conversation
         </a>
       </div>
+
+      <!-- Animated system illustration -->
+      <div
+        class="hero-visual hero-fade d3"
+        aria-hidden="true"
+      >
+        <div class="system-card">
+          <div class="system-topbar">
+            <span class="system-dot system-dot-red"></span>
+            <span class="system-dot system-dot-yellow"></span>
+            <span class="system-dot system-dot-green"></span>
+            <span class="system-path">enrole.system</span>
+          </div>
+
+          <div class="system-body">
+            <div class="system-sidebar">
+              <span class="side-line side-line-active"></span>
+              <span class="side-line"></span>
+              <span class="side-line"></span>
+              <span class="side-line short"></span>
+            </div>
+
+            <div class="system-content">
+              <span class="content-label">
+                PRODUCT SYSTEM
+              </span>
+
+              <div class="content-heading">
+                Building useful software
+              </div>
+
+              <div class="content-bars">
+                <span></span>
+                <span></span>
+                <span></span>
+              </div>
+
+              <div class="content-status">
+                <span class="status-pulse"></span>
+                <span>Designed for growth</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="floating-chip chip-one">
+          <span class="chip-check">✓</span>
+          Local context
+        </div>
+
+        <div class="floating-chip chip-two">
+          <span class="chip-check">✓</span>
+          Built to last
+        </div>
+      </div>
     </section>
 
-    <div class="flag-rule" aria-hidden="true"></div>
+    <div
+      class="flag-rule"
+      aria-hidden="true"
+    ></div>
 
     <!-- How we work -->
-    <section class="tight" id="build">
+    <section
+      class="tight"
+      id="build"
+    >
       <div class="wrap">
-        <p class="eyebrow reveal">How we work</p>
+        <p class="eyebrow reveal">
+          How we work
+        </p>
 
         <h2 class="reveal">
           Product-minded, not project-minded.
@@ -856,15 +1358,19 @@
 
         <div class="build-grid reveal">
           <div class="build-col build-yes">
-            <p class="col-label">WE BUILD</p>
+            <p class="col-label">
+              WE BUILD
+            </p>
 
             <ul>
               <li>
                 Products that solve real operational problems in The Gambia
               </li>
+
               <li>
                 Reusable systems designed to improve over time
               </li>
+
               <li>
                 Clean, maintainable code built on modern, cloud-ready stacks
               </li>
@@ -872,15 +1378,19 @@
           </div>
 
           <div class="build-col build-no">
-            <p class="col-label">WE DON'T</p>
+            <p class="col-label">
+              WE DON'T
+            </p>
 
             <ul>
               <li>
                 Sell website design as our core business
               </li>
+
               <li>
                 Take disconnected freelance work without a strategic fit
               </li>
+
               <li>
                 Build features without a clear problem or real user
               </li>
@@ -893,7 +1403,9 @@
     <!-- Enrole product -->
     <section id="product">
       <div class="wrap">
-        <p class="eyebrow reveal">Our product</p>
+        <p class="eyebrow reveal">
+          Our product
+        </p>
 
         <div class="product-card reveal">
           <span class="badge">
@@ -914,17 +1426,23 @@
           <div class="product-meta">
             <div>
               <span class="meta-label">FOR</span>
-              <span class="meta-value">Gambian schools</span>
+              <span class="meta-value">
+                Gambian schools
+              </span>
             </div>
 
             <div>
               <span class="meta-label">STATUS</span>
-              <span class="meta-value">Flagship product — building now</span>
+              <span class="meta-value">
+                Flagship product — building now
+              </span>
             </div>
 
             <div>
               <span class="meta-label">BUILT BY</span>
-              <span class="meta-value">Enrole.</span>
+              <span class="meta-value">
+                Enrole.
+              </span>
             </div>
           </div>
         </div>
@@ -934,7 +1452,9 @@
     <!-- Client work -->
     <section id="work">
       <div class="wrap">
-        <p class="eyebrow reveal">Client work</p>
+        <p class="eyebrow reveal">
+          Client work
+        </p>
 
         <div class="product-card reveal">
           <span class="badge badge-client">
@@ -957,7 +1477,9 @@
           <div class="product-meta">
             <div>
               <span class="meta-label">CLIENT</span>
-              <span class="meta-value">BeGlitch</span>
+              <span class="meta-value">
+                BeGlitch
+              </span>
             </div>
 
             <div>
@@ -969,7 +1491,9 @@
 
             <div>
               <span class="meta-label">BUILT BY</span>
-              <span class="meta-value">Enrole.</span>
+              <span class="meta-value">
+                Enrole.
+              </span>
             </div>
           </div>
         </div>
@@ -990,7 +1514,9 @@
     <!-- Vision -->
     <section id="vision">
       <div class="wrap">
-        <p class="eyebrow reveal">Vision</p>
+        <p class="eyebrow reveal">
+          Vision
+        </p>
 
         <p class="vision-text reveal">
           A Gambia where every school, business, and public institution
@@ -1004,7 +1530,10 @@
 
   <!-- Footer -->
   <footer id="contact">
-    <div class="flag-rule" aria-hidden="true"></div>
+    <div
+      class="flag-rule"
+      aria-hidden="true"
+    ></div>
 
     <div class="wrap">
       <div class="footer-inner">
@@ -1041,7 +1570,10 @@
               rel="noopener noreferrer"
               aria-label="Enrole. on Instagram"
             >
-              <span class="si si-instagram" aria-hidden="true"></span>
+              <span
+                class="si si-instagram"
+                aria-hidden="true"
+              ></span>
               <span>Instagram</span>
             </a>
 
@@ -1051,7 +1583,10 @@
               rel="noopener noreferrer"
               aria-label="Enrole. on Threads"
             >
-              <span class="si si-threads" aria-hidden="true"></span>
+              <span
+                class="si si-threads"
+                aria-hidden="true"
+              ></span>
               <span>Threads</span>
             </a>
 
@@ -1061,7 +1596,10 @@
               rel="noopener noreferrer"
               aria-label="Enrole. on Facebook"
             >
-              <span class="si si-facebook" aria-hidden="true"></span>
+              <span
+                class="si si-facebook"
+                aria-hidden="true"
+              ></span>
               <span>Facebook</span>
             </a>
 
@@ -1071,7 +1609,10 @@
               rel="noopener noreferrer"
               aria-label="Enrole. on LinkedIn"
             >
-              <span class="si si-linkedin" aria-hidden="true"></span>
+              <span
+                class="si si-linkedin"
+                aria-hidden="true"
+              ></span>
               <span>LinkedIn</span>
             </a>
 
@@ -1081,7 +1622,10 @@
               rel="noopener noreferrer"
               aria-label="Enrole. on GitHub"
             >
-              <span class="si si-github" aria-hidden="true"></span>
+              <span
+                class="si si-github"
+                aria-hidden="true"
+              ></span>
               <span>GitHub</span>
             </a>
           </div>
@@ -1109,14 +1653,21 @@
 
       navToggle.setAttribute(
         'aria-label',
-        isOpen ? 'Close navigation menu' : 'Open navigation menu'
+        isOpen
+          ? 'Close navigation menu'
+          : 'Open navigation menu'
       );
     });
 
     navLinks.querySelectorAll('a').forEach(function (link) {
       link.addEventListener('click', function () {
         navLinks.classList.remove('open');
-        navToggle.setAttribute('aria-expanded', 'false');
+
+        navToggle.setAttribute(
+          'aria-expanded',
+          'false'
+        );
+
         navToggle.setAttribute(
           'aria-label',
           'Open navigation menu'
