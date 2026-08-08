@@ -20,7 +20,10 @@
   <meta property="og:locale" content="en_GM">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Enrole.">
-  <meta property="og:title" content="Enrole. — Software, thoughtfully engineered.">
+  <meta
+    property="og:title"
+    content="Enrole. — Software, thoughtfully engineered."
+  >
   <meta
     property="og:description"
     content="Enrole. is a Gambian software engineering company designing mobile, web, and desktop products for schools, businesses, and institutions."
@@ -32,7 +35,10 @@
   >
 
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Enrole. — Software, thoughtfully engineered.">
+  <meta
+    name="twitter:title"
+    content="Enrole. — Software, thoughtfully engineered."
+  >
   <meta
     name="twitter:description"
     content="Enrole. is a Gambian software engineering company designing mobile, web, and desktop products for schools, businesses, and institutions."
@@ -42,7 +48,7 @@
     content="https://enrole.gm/assets/enrole-og-image.jpg"
   >
 
-  <!-- Apply the saved theme before the page paints -->
+  <!-- Prevents a flash of the wrong theme before page paint -->
   <script>
     (function(){
       var savedTheme = localStorage.getItem("enrole-theme");
@@ -77,13 +83,19 @@
     :root{
       color-scheme: dark;
 
+      /* Shared Enrole. brand colors */
+      --accent: #DFFF4F;
+      --accent-dim: #C7E647;
+
+      --flag-red: #CE1126;
+      --flag-blue: #0C1C8C;
+      --flag-green: #3A7728;
+
+      /* Dark theme */
       --bg: #1A242B;
       --surface: #151E24;
       --surface-elevated: #141D22;
       --bg-deep: #10181D;
-
-      --accent: #DFFF4F;
-      --accent-dim: #C7E647;
 
       --text: #F0F4F7;
       --text-muted: #94A3AE;
@@ -92,10 +104,6 @@
       --success: #22C55E;
       --warning: #F59E0B;
       --info: #3B82F6;
-
-      --flag-red: #CE1126;
-      --flag-blue: #0C1C8C;
-      --flag-green: #3A7728;
 
       --toggle-bg: #202D35;
       --toggle-text: #F0F4F7;
@@ -124,26 +132,30 @@
       --max-width: 1120px;
     }
 
+    /*
+      Light mode keeps the exact same neon-yellow brand accent.
+      Only the neutrals change.
+    */
     html[data-theme="light"]{
       color-scheme: light;
 
-      --bg: #F5F7F8;
+      --accent: #DFFF4F;
+      --accent-dim: #C7E647;
+
+      --bg: #F2F5F6;
       --surface: #FFFFFF;
       --surface-elevated: #FFFFFF;
-      --bg-deep: #E9EEF1;
-
-      --accent: #607A00;
-      --accent-dim: #4E6500;
+      --bg-deep: #E5EBEE;
 
       --text: #17232A;
       --text-muted: #5D6B74;
-      --border: #D5DEE3;
+      --border: #CBD6DC;
 
       --success: #16803D;
       --warning: #A76100;
       --info: #1D5FA7;
 
-      --toggle-bg: #E2E9ED;
+      --toggle-bg: #E0E8EC;
       --toggle-text: #17232A;
     }
 
@@ -151,23 +163,23 @@
       :root:not([data-theme="dark"]){
         color-scheme: light;
 
-        --bg: #F5F7F8;
+        --accent: #DFFF4F;
+        --accent-dim: #C7E647;
+
+        --bg: #F2F5F6;
         --surface: #FFFFFF;
         --surface-elevated: #FFFFFF;
-        --bg-deep: #E9EEF1;
-
-        --accent: #607A00;
-        --accent-dim: #4E6500;
+        --bg-deep: #E5EBEE;
 
         --text: #17232A;
         --text-muted: #5D6B74;
-        --border: #D5DEE3;
+        --border: #CBD6DC;
 
         --success: #16803D;
         --warning: #A76100;
         --info: #1D5FA7;
 
-        --toggle-bg: #E2E9ED;
+        --toggle-bg: #E0E8EC;
         --toggle-text: #17232A;
       }
     }
@@ -256,7 +268,7 @@
     }
 
     /* =========================================
-       GLOBAL THEME TRANSITIONS
+       THEME TRANSITIONS
     ========================================= */
 
     body,
@@ -311,11 +323,7 @@
       position: sticky;
       top: 0;
       z-index: 20;
-      background: color-mix(
-        in srgb,
-        var(--bg) 94%,
-        transparent
-      );
+      background: var(--bg);
       border-bottom: 1px solid var(--border);
       backdrop-filter: blur(10px);
     }
@@ -357,7 +365,7 @@
     }
 
     .nav-cta{
-      color: var(--bg) !important;
+      color: #10181D !important;
       background: var(--accent);
       border-radius: var(--radius-sm);
       padding: var(--space-2) var(--space-4);
@@ -473,7 +481,7 @@
 
     .btn-primary{
       background: var(--accent);
-      color: var(--bg-deep);
+      color: #10181D;
     }
 
     .btn-primary:hover{
@@ -606,10 +614,6 @@
       background: var(--surface-elevated);
       border: 1px solid var(--border);
       border-radius: var(--radius-lg);
-    }
-
-    .product-card + .product-card{
-      margin-top: var(--space-5);
     }
 
     .badge{
