@@ -38,6 +38,7 @@
       --success: #22C55E;
       --warning: #F59E0B;
       --info: #3B82F6;
+      --error: #EF4444;
 
       --flag-red: #CE1126;
       --flag-blue: #0C1C8C;
@@ -97,14 +98,31 @@
       text-decoration: none;
     }
 
-    button {
+    button,
+    input,
+    select,
+    textarea {
       font: inherit;
+    }
+
+    button {
+      cursor: pointer;
+    }
+
+    button:disabled {
+      cursor: not-allowed;
+      opacity: 0.55;
     }
 
     ul {
       list-style: none;
       padding: 0;
       margin: 0;
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
     }
 
     .wrap {
@@ -158,22 +176,36 @@
       border: 0;
     }
 
+    .honeypot {
+      position: absolute !important;
+      left: -9999px !important;
+      width: 1px !important;
+      height: 1px !important;
+      opacity: 0 !important;
+      pointer-events: none !important;
+    }
+
+    :focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 3px;
+    }
+
     /* Navigation */
 
     .nav {
       position: sticky;
       top: 0;
       z-index: 50;
-      background: rgba(26, 36, 43, 0.88);
       border-bottom: 1px solid var(--border);
+      background: rgba(26, 36, 43, 0.88);
       backdrop-filter: blur(12px);
     }
 
     .nav-inner {
       display: flex;
+      min-height: 72px;
       align-items: center;
       justify-content: space-between;
-      min-height: 72px;
     }
 
     .nav-links {
@@ -219,7 +251,6 @@
       border-radius: var(--radius-sm);
       background: transparent;
       color: var(--text);
-      cursor: pointer;
     }
 
     .nav-toggle svg {
@@ -261,7 +292,9 @@
     .btn {
       display: inline-flex;
       align-items: center;
+      justify-content: center;
       gap: var(--space-2);
+      min-height: 46px;
       padding: var(--space-3) var(--space-6);
       border: 1px solid transparent;
       border-radius: var(--radius-sm);
@@ -577,6 +610,214 @@
       line-height: 1.5;
     }
 
+    /* Contact section */
+
+    .contact-section {
+      background: var(--bg);
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 0.85fr 1.15fr;
+      gap: var(--space-8);
+      align-items: start;
+    }
+
+    .contact-copy h2 {
+      max-width: 13ch;
+    }
+
+    .contact-description {
+      max-width: 43ch;
+      color: var(--text-muted);
+    }
+
+    .contact-details {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-3);
+      margin-top: var(--space-6);
+      color: var(--accent);
+      font-family: var(--font-mono);
+      font-size: 14px;
+    }
+
+    .contact-form-panel {
+      padding: var(--space-7);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      background: var(--surface);
+    }
+
+    .contact-choice {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-3);
+    }
+
+    .contact-choice label {
+      font-size: 14px;
+      font-weight: 700;
+    }
+
+    .contact-choice select {
+      width: 100%;
+      min-height: 48px;
+      padding: 0 var(--space-3);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      outline: none;
+      background: var(--bg-deep);
+      color: var(--text);
+    }
+
+    .contact-choice select:focus {
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px rgba(223, 255, 79, 0.12);
+    }
+
+    .contact-choice .btn {
+      align-self: flex-start;
+      margin-top: var(--space-3);
+    }
+
+    .contact-form[hidden],
+    .contact-choice[hidden] {
+      display: none;
+    }
+
+    .contact-form:not([hidden]) {
+      display: block;
+    }
+
+    .form-header {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--space-3);
+      margin-bottom: var(--space-5);
+      padding-bottom: var(--space-4);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .back-button {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-2);
+      padding: 0;
+      border: 0;
+      background: transparent;
+      color: var(--text-muted);
+      font-size: 13px;
+    }
+
+    .back-button:hover,
+    .back-button:focus-visible {
+      color: var(--accent);
+    }
+
+    .back-button svg {
+      width: 15px;
+      height: 15px;
+    }
+
+    .selected-enquiry {
+      margin: 0;
+      color: var(--accent);
+      font-family: var(--font-mono);
+      font-size: 12px;
+      text-transform: uppercase;
+    }
+
+    .form-field {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-2);
+      margin-bottom: var(--space-4);
+    }
+
+    .form-field label {
+      font-size: 14px;
+      font-weight: 700;
+    }
+
+    .form-field input,
+    .form-field textarea {
+      width: 100%;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      outline: none;
+      background: var(--bg-deep);
+      color: var(--text);
+    }
+
+    .form-field input {
+      min-height: 46px;
+      padding: 0 var(--space-3);
+    }
+
+    .form-field textarea {
+      min-height: 140px;
+      padding: var(--space-3);
+      resize: vertical;
+    }
+
+    .form-field input:focus,
+    .form-field textarea:focus {
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px rgba(223, 255, 79, 0.12);
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: var(--space-4);
+    }
+
+    .checkbox-field {
+      display: flex;
+      align-items: flex-start;
+      gap: var(--space-3);
+      margin: var(--space-5) 0;
+      color: var(--text-muted);
+      font-size: 13px;
+      line-height: 1.5;
+    }
+
+    .checkbox-field input {
+      flex: 0 0 auto;
+      width: 17px;
+      height: 17px;
+      margin-top: 2px;
+      accent-color: var(--accent);
+    }
+
+    .checkbox-field a {
+      color: var(--accent);
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+
+    .form-submit {
+      border: 0;
+    }
+
+    .form-status {
+      min-height: 24px;
+      margin: var(--space-4) 0 0;
+      color: var(--text-muted);
+      font-size: 14px;
+    }
+
+    .form-status.success {
+      color: var(--success);
+    }
+
+    .form-status.error {
+      color: var(--error);
+    }
+
     /* Footer */
 
     footer {
@@ -628,7 +869,6 @@
     }
 
     .socials a {
-      position: relative;
       display: flex;
       width: 38px;
       height: 38px;
@@ -658,6 +898,26 @@
       transform: translateY(-2px);
     }
 
+    .legal-links {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+      gap: var(--space-4);
+      margin-top: var(--space-3);
+      font-size: 13px;
+    }
+
+    .legal-links a {
+      color: var(--text-muted);
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+
+    .legal-links a:hover,
+    .legal-links a:focus-visible {
+      color: var(--accent);
+    }
+
     .copyright {
       margin: 0;
       padding: var(--space-5) 0;
@@ -666,16 +926,22 @@
       font-size: 12px;
     }
 
-    :focus-visible {
-      outline: 2px solid var(--accent);
-      outline-offset: 3px;
-    }
-
     /* Responsive layout */
 
     @media (max-width: 860px) {
       .pillars-grid {
         grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 800px) {
+      .contact-grid {
+        grid-template-columns: 1fr;
+        gap: var(--space-6);
+      }
+
+      .contact-copy h2 {
+        max-width: none;
       }
     }
 
@@ -741,7 +1007,20 @@
       }
 
       .btn {
-        justify-content: center;
+        width: 100%;
+      }
+
+      .contact-form-panel {
+        padding: var(--space-5);
+      }
+
+      .form-row {
+        grid-template-columns: 1fr;
+        gap: 0;
+      }
+
+      .contact-choice .btn {
+        width: 100%;
       }
 
       .footer-inner {
@@ -752,7 +1031,8 @@
         align-items: flex-start;
       }
 
-      .socials {
+      .socials,
+      .legal-links {
         justify-content: flex-start;
       }
     }
@@ -865,7 +1145,9 @@
           </svg>
         </a>
 
-        <a class="btn btn-ghost" href="#contact">Get in touch</a>
+        <a class="btn btn-ghost" href="#contact">
+          Get in touch
+        </a>
       </div>
     </section>
 
@@ -898,7 +1180,9 @@
         <div class="pillars-grid reveal">
           <article class="pillar-card">
             <span class="pillar-index">01</span>
+
             <h3>Digital public infrastructure</h3>
+
             <p>
               Systems that improve how institutions serve people through
               education, health, local government, public information, and
@@ -908,7 +1192,9 @@
 
           <article class="pillar-card">
             <span class="pillar-index">02</span>
+
             <h3>Business infrastructure</h3>
+
             <p>
               Systems that help Gambian businesses operate professionally,
               including invoicing, inventory, payments, staff, and customer
@@ -918,7 +1204,9 @@
 
           <article class="pillar-card">
             <span class="pillar-index">03</span>
+
             <h3>Digital trust infrastructure</h3>
+
             <p>
               Security and reliability built into the product through
               authentication, audit logs, backups, and consent.
@@ -932,7 +1220,9 @@
       <div class="wrap">
         <p class="eyebrow reveal">How we work</p>
 
-        <h2 class="reveal">Product-minded, not project-minded.</h2>
+        <h2 class="reveal">
+          Product-minded, not project-minded.
+        </h2>
 
         <div class="build-grid reveal">
           <article class="build-col build-yes">
@@ -952,6 +1242,7 @@
                     <polyline points="20 6 9 17 4 12"></polyline>
                   </svg>
                 </span>
+
                 Reusable, scalable software that solves real Gambian
                 operational problems.
               </li>
@@ -969,6 +1260,7 @@
                     <polyline points="20 6 9 17 4 12"></polyline>
                   </svg>
                 </span>
+
                 Clean, maintainable codebases on modern, cloud-ready stacks.
               </li>
 
@@ -985,6 +1277,7 @@
                     <polyline points="20 6 9 17 4 12"></polyline>
                   </svg>
                 </span>
+
                 Products with recurring value, not one-off custom jobs.
               </li>
             </ul>
@@ -1008,6 +1301,7 @@
                     <line x1="6" y1="6" x2="18" y2="18"></line>
                   </svg>
                 </span>
+
                 Sell “website design” as a service.
               </li>
 
@@ -1025,6 +1319,7 @@
                     <line x1="6" y1="6" x2="18" y2="18"></line>
                   </svg>
                 </span>
+
                 Take freelance gigs that do not move us toward our roadmap.
               </li>
 
@@ -1042,6 +1337,7 @@
                     <line x1="6" y1="6" x2="18" y2="18"></line>
                   </svg>
                 </span>
+
                 Chase trends without a clear problem and a real customer.
               </li>
             </ul>
@@ -1072,7 +1368,9 @@
 
             <div>
               <span class="meta-label">STATUS</span>
-              <span class="meta-value">Flagship product — building now</span>
+              <span class="meta-value">
+                Flagship product — building now
+              </span>
             </div>
 
             <div>
@@ -1104,7 +1402,9 @@
           <div class="product-meta">
             <div>
               <span class="meta-label">FOR</span>
-              <span class="meta-value">BeGlitch — September 2026 course</span>
+              <span class="meta-value">
+                BeGlitch — September 2026 course
+              </span>
             </div>
 
             <div>
@@ -1142,9 +1442,280 @@
         </p>
       </div>
     </section>
+
+    <!-- Contact section -->
+    <section class="contact-section" id="contact">
+      <div class="wrap">
+        <div class="contact-grid">
+          <div class="contact-copy">
+            <p class="eyebrow reveal">Start a conversation</p>
+
+            <h2 class="reveal">
+              What can Enrole. help you build?
+            </h2>
+
+            <p class="contact-description reveal">
+              Choose an option below and tell us what you are trying to
+              improve, organise, or build. We will review your message and
+              get back to you.
+            </p>
+
+            <div class="contact-details reveal">
+              <a href="mailto:enrole.gm@gmail.com">
+                enrole.gm@gmail.com
+              </a>
+
+              <a
+                href="https://wa.me/2207005974"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                WhatsApp: +220 7005974
+              </a>
+            </div>
+          </div>
+
+          <div class="contact-form-panel reveal">
+            <div class="contact-choice" id="contactChoice">
+              <label for="enquiryChoice">
+                Select an enquiry type
+              </label>
+
+              <select id="enquiryChoice">
+                <option value="">Choose an option</option>
+
+                <option value="school-erp">
+                  School ERP
+                </option>
+
+                <option value="business-software">
+                  Business software
+                </option>
+
+                <option value="institutional-system">
+                  Institutional system
+                </option>
+
+                <option value="client-project">
+                  Client project
+                </option>
+
+                <option value="partnership">
+                  Partnership or collaboration
+                </option>
+
+                <option value="general">
+                  General enquiry
+                </option>
+              </select>
+
+              <button
+                class="btn btn-primary"
+                id="showContactForm"
+                type="button"
+                disabled
+              >
+                Continue
+
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                >
+                  <line x1="5" y1="12" x2="19" y2="12"></line>
+                  <polyline points="12 5 19 12 12 19"></polyline>
+                </svg>
+              </button>
+            </div>
+
+            <form
+              class="contact-form"
+              id="contactForm"
+              action="https://formsubmit.co/ajax/enrole.gm@gmail.com"
+              method="POST"
+              hidden
+            >
+              <div class="form-header">
+                <button
+                  class="back-button"
+                  id="backToChoice"
+                  type="button"
+                >
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    aria-hidden="true"
+                  >
+                    <line x1="19" y1="12" x2="5" y2="12"></line>
+                    <polyline points="12 19 5 12 12 5"></polyline>
+                  </svg>
+
+                  Change enquiry type
+                </button>
+
+                <p
+                  class="selected-enquiry"
+                  id="selectedEnquiry"
+                ></p>
+              </div>
+
+              <input
+                type="hidden"
+                name="_subject"
+                value="New enquiry from the Enrole. website"
+              >
+
+              <input
+                type="hidden"
+                name="_template"
+                value="table"
+              >
+
+              <input
+                type="hidden"
+                name="_captcha"
+                value="true"
+              >
+
+              <input
+                type="hidden"
+                name="enquiry_type"
+                id="enquiryType"
+              >
+
+              <input
+                type="text"
+                name="_honey"
+                tabindex="-1"
+                autocomplete="off"
+                class="honeypot"
+                aria-hidden="true"
+              >
+
+              <div class="form-field">
+                <label for="name">Full name</label>
+
+                <input
+                  id="name"
+                  name="name"
+                  type="text"
+                  autocomplete="name"
+                  required
+                >
+              </div>
+
+              <div class="form-field">
+                <label for="organisation">
+                  Organisation or school
+                </label>
+
+                <input
+                  id="organisation"
+                  name="organisation"
+                  type="text"
+                  autocomplete="organization"
+                >
+              </div>
+
+              <div class="form-row">
+                <div class="form-field">
+                  <label for="email">
+                    Email address
+                  </label>
+
+                  <input
+                    id="email"
+                    name="email"
+                    type="email"
+                    autocomplete="email"
+                    required
+                  >
+                </div>
+
+                <div class="form-field">
+                  <label for="phone">
+                    WhatsApp or phone
+                  </label>
+
+                  <input
+                    id="phone"
+                    name="phone"
+                    type="tel"
+                    autocomplete="tel"
+                  >
+                </div>
+              </div>
+
+              <div class="form-field">
+                <label for="message">Message</label>
+
+                <textarea
+                  id="message"
+                  name="message"
+                  rows="6"
+                  required
+                ></textarea>
+              </div>
+
+              <label class="checkbox-field">
+                <input
+                  type="checkbox"
+                  name="privacy_consent"
+                  value="accepted"
+                  required
+                >
+
+                <span>
+                  I agree that Enrole. may use the information I submit
+                  to respond to my enquiry. See the
+                  <a href="privacy-policy.html">
+                    Privacy Policy
+                  </a>.
+                </span>
+              </label>
+
+              <button
+                class="btn btn-primary form-submit"
+                type="submit"
+              >
+                Send enquiry
+
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                >
+                  <line x1="22" y1="2" x2="11" y2="13"></line>
+                  <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+                </svg>
+              </button>
+
+              <p
+                class="form-status"
+                id="formStatus"
+                role="status"
+                aria-live="polite"
+              ></p>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
   </main>
 
-  <footer id="contact">
+  <footer>
     <div class="flag-rule" aria-hidden="true"></div>
 
     <div class="wrap">
@@ -1203,7 +1774,10 @@
             WhatsApp: +220 7005974
           </a>
 
-          <div class="socials" aria-label="Enrole. social media links">
+          <div
+            class="socials"
+            aria-label="Enrole. social media links"
+          >
             <a
               href="https://www.instagram.com/enrole.gm"
               target="_blank"
@@ -1320,6 +1894,16 @@
               <span class="sr-only">GitHub</span>
             </a>
           </div>
+
+          <div class="legal-links" aria-label="Legal links">
+            <a href="privacy-policy.html">
+              Privacy Policy
+            </a>
+
+            <a href="terms-of-service.html">
+              Terms of Service
+            </a>
+          </div>
         </div>
       </div>
 
@@ -1339,10 +1923,16 @@
       navLinks.classList.toggle("open", isOpen);
       document.body.classList.toggle("menu-open", isOpen);
 
-      navToggle.setAttribute("aria-expanded", String(isOpen));
+      navToggle.setAttribute(
+        "aria-expanded",
+        String(isOpen)
+      );
+
       navToggle.setAttribute(
         "aria-label",
-        isOpen ? "Close navigation menu" : "Open navigation menu"
+        isOpen
+          ? "Close navigation menu"
+          : "Open navigation menu"
       );
 
       menuIcon.hidden = isOpen;
@@ -1366,10 +1956,91 @@
       }
     });
 
-    const revealElements = document.querySelectorAll(".reveal");
-    const prefersReducedMotion = window.matchMedia(
-      "(prefers-reduced-motion: reduce)"
-    ).matches;
+    const enquiryChoice = document.getElementById("enquiryChoice");
+    const showContactForm = document.getElementById("showContactForm");
+    const contactChoice = document.getElementById("contactChoice");
+    const contactForm = document.getElementById("contactForm");
+    const backToChoice = document.getElementById("backToChoice");
+    const selectedEnquiry = document.getElementById("selectedEnquiry");
+    const enquiryType = document.getElementById("enquiryType");
+    const formStatus = document.getElementById("formStatus");
+
+    enquiryChoice.addEventListener("change", function () {
+      showContactForm.disabled = !enquiryChoice.value;
+    });
+
+    showContactForm.addEventListener("click", function () {
+      const selectedOption =
+        enquiryChoice.options[enquiryChoice.selectedIndex];
+
+      selectedEnquiry.textContent =
+        "Enquiry: " + selectedOption.textContent.trim();
+
+      enquiryType.value = selectedOption.textContent.trim();
+
+      contactChoice.hidden = true;
+      contactForm.hidden = false;
+
+      contactForm.querySelector("#name").focus();
+    });
+
+    backToChoice.addEventListener("click", function () {
+      contactForm.hidden = true;
+      contactChoice.hidden = false;
+
+      enquiryChoice.focus();
+    });
+
+    contactForm.addEventListener("submit", async function (event) {
+      event.preventDefault();
+
+      const submitButton = contactForm.querySelector(
+        'button[type="submit"]'
+      );
+
+      submitButton.disabled = true;
+      formStatus.className = "form-status";
+      formStatus.textContent = "Sending your enquiry...";
+
+      try {
+        const response = await fetch(contactForm.action, {
+          method: "POST",
+          body: new FormData(contactForm),
+          headers: {
+            Accept: "application/json"
+          }
+        });
+
+        if (!response.ok) {
+          throw new Error("Form submission failed.");
+        }
+
+        contactForm.reset();
+        enquiryChoice.value = "";
+        showContactForm.disabled = true;
+
+        contactForm.hidden = true;
+        contactChoice.hidden = false;
+
+        formStatus.className = "form-status success";
+        formStatus.textContent =
+          "Thank you. Your enquiry has been sent successfully.";
+      } catch (error) {
+        formStatus.className = "form-status error";
+        formStatus.textContent =
+          "Something went wrong. Please try again or contact us on WhatsApp.";
+      } finally {
+        submitButton.disabled = false;
+      }
+    });
+
+    const revealElements =
+      document.querySelectorAll(".reveal");
+
+    const prefersReducedMotion =
+      window.matchMedia(
+        "(prefers-reduced-motion: reduce)"
+      ).matches;
 
     if (
       prefersReducedMotion ||
