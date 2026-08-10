@@ -1,0 +1,670 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Cookie Policy — Enrole.</title>
+
+  <meta
+    name="description"
+    content="Read the Cookie Policy for Enrole., a Gambian software engineering company."
+  >
+
+  <meta name="theme-color" content="#1A242B">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@500&family=Space+Grotesk:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500&display=swap"
+    rel="stylesheet"
+  >
+
+  <style>
+    :root {
+      --bg: #1A242B;
+      --surface: #151E24;
+      --surface-elevated: #141D22;
+      --bg-deep: #10181D;
+
+      --accent: #DFFF4F;
+      --accent-dim: #C7E647;
+
+      --text: #F0F4F7;
+      --text-muted: #94A3AE;
+      --border: #2A3842;
+
+      --flag-red: #CE1126;
+      --flag-blue: #0C1C8C;
+      --flag-green: #3A7728;
+
+      --radius-sm: 8px;
+      --radius-md: 12px;
+      --radius-lg: 16px;
+
+      --font-logo: "Inter", sans-serif;
+      --font-display: "Space Grotesk", sans-serif;
+      --font-body: "Manrope", sans-serif;
+      --font-mono: "IBM Plex Mono", monospace;
+
+      --max-width: 820px;
+      --site-width: 1120px;
+    }
+
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      min-height: 100vh;
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--font-body);
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a {
+      color: var(--accent);
+    }
+
+    a:focus-visible,
+    button:focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 3px;
+    }
+
+    /* Navigation */
+
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      border-bottom: 1px solid var(--border);
+      background: rgba(26, 36, 43, 0.9);
+      backdrop-filter: blur(12px);
+    }
+
+    .nav-inner {
+      display: flex;
+      min-height: 72px;
+      align-items: center;
+      justify-content: space-between;
+      width: min(100% - 48px, var(--site-width));
+      margin-inline: auto;
+    }
+
+    .wordmark {
+      color: var(--text);
+      font-family: var(--font-logo);
+      font-size: 20px;
+      font-weight: 500;
+      letter-spacing: -0.04em;
+      text-decoration: none;
+    }
+
+    .wordmark:hover {
+      color: var(--accent);
+    }
+
+    .wordmark .dot {
+      color: var(--accent);
+    }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--text-muted);
+      font-family: var(--font-mono);
+      font-size: 13px;
+      text-decoration: none;
+    }
+
+    .back-link:hover {
+      color: var(--accent);
+    }
+
+    .back-link svg {
+      width: 15px;
+      height: 15px;
+    }
+
+    /* Flag rule */
+
+    .flag-rule {
+      width: 100%;
+      height: 3px;
+      background: linear-gradient(
+        90deg,
+        var(--flag-red) 0 32%,
+        var(--text) 32% 34%,
+        var(--flag-blue) 34% 66%,
+        var(--text) 66% 68%,
+        var(--flag-green) 68% 100%
+      );
+      opacity: 0.9;
+    }
+
+    /* Main content */
+
+    .content {
+      width: min(100% - 48px, var(--max-width));
+      margin: 0 auto;
+      padding: 80px 0 96px;
+    }
+
+    .eyebrow {
+      margin: 0 0 16px;
+      color: var(--accent);
+      font-family: var(--font-mono);
+      font-size: 12px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    h1,
+    h2 {
+      font-family: var(--font-display);
+      line-height: 1.2;
+      letter-spacing: -0.02em;
+    }
+
+    h1 {
+      margin: 0 0 16px;
+      font-size: clamp(40px, 7vw, 68px);
+      font-weight: 700;
+    }
+
+    h2 {
+      margin: 52px 0 16px;
+      font-size: clamp(24px, 4vw, 30px);
+      font-weight: 600;
+    }
+
+    p,
+    li {
+      color: var(--text-muted);
+    }
+
+    p {
+      margin: 0 0 20px;
+    }
+
+    ul {
+      margin: 0 0 24px;
+      padding-left: 22px;
+    }
+
+    li {
+      margin-bottom: 8px;
+    }
+
+    .updated {
+      margin-bottom: 48px;
+      color: var(--text-muted);
+      font-family: var(--font-mono);
+      font-size: 13px;
+    }
+
+    .notice {
+      margin-bottom: 40px;
+      padding: 20px 24px;
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--accent);
+      border-radius: var(--radius-md);
+      background: var(--surface);
+    }
+
+    .notice p {
+      margin: 0;
+      font-size: 14px;
+    }
+
+    .cookie-table-wrapper {
+      overflow-x: auto;
+      margin: 24px 0 32px;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+    }
+
+    .cookie-table {
+      width: 100%;
+      min-width: 620px;
+      border-collapse: collapse;
+      background: var(--surface);
+      font-size: 14px;
+    }
+
+    .cookie-table th,
+    .cookie-table td {
+      padding: 16px;
+      border-bottom: 1px solid var(--border);
+      text-align: left;
+      vertical-align: top;
+    }
+
+    .cookie-table th {
+      color: var(--text);
+      font-family: var(--font-mono);
+      font-size: 11px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .cookie-table td {
+      color: var(--text-muted);
+    }
+
+    .cookie-table tr:last-child td {
+      border-bottom: 0;
+    }
+
+    .contact-box {
+      margin-top: 28px;
+      padding: 24px;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      background: var(--surface-elevated);
+    }
+
+    .contact-box p:last-child {
+      margin-bottom: 0;
+    }
+
+    /* Footer */
+
+    footer {
+      background: var(--surface);
+    }
+
+    .footer-inner {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      width: min(100% - 48px, var(--site-width));
+      margin-inline: auto;
+      padding: 28px 0;
+    }
+
+    .footer-inner p {
+      margin: 0;
+      color: var(--text-muted);
+      font-size: 13px;
+    }
+
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      font-size: 13px;
+    }
+
+    .footer-links a {
+      color: var(--text-muted);
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+
+    .footer-links a:hover {
+      color: var(--accent);
+    }
+
+    /* Responsive */
+
+    @media (max-width: 600px) {
+      .nav-inner,
+      .footer-inner,
+      .content {
+        width: min(100% - 32px, var(--site-width));
+      }
+
+      .nav-inner {
+        min-height: 64px;
+      }
+
+      .back-link {
+        font-size: 0;
+      }
+
+      .back-link svg {
+        width: 18px;
+        height: 18px;
+      }
+
+      .content {
+        padding: 56px 0 72px;
+      }
+
+      .footer-inner {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header class="nav">
+    <div class="nav-inner">
+      <!-- Clickable logo linking back to the main website -->
+      <a
+        class="wordmark"
+        href="index.html"
+        aria-label="Enrole. home"
+      >
+        Enrole<span class="dot">.</span>
+      </a>
+
+      <div class="nav-actions">
+        <a
+          class="back-link"
+          href="index.html"
+          aria-label="Back to the Enrole. main website"
+        >
+          <svg
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            aria-hidden="true"
+          >
+            <line x1="19" y1="12" x2="5" y2="12"></line>
+            <polyline points="12 19 5 12 12 5"></polyline>
+          </svg>
+
+          <span>Back to main site</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <div class="flag-rule" aria-hidden="true"></div>
+
+  <main class="content">
+    <p class="eyebrow">Legal</p>
+
+    <h1>Cookie Policy</h1>
+
+    <p class="updated">
+      Last updated: 10 August 2026
+    </p>
+
+    <div class="notice">
+      <p>
+        This Cookie Policy explains how Enrole. uses cookies and similar
+        technologies on this website. The website is currently intended to
+        use only essential technical functionality unless additional tools are
+        added in the future.
+      </p>
+    </div>
+
+    <p>
+      Enrole. (“Enrole.”, “we”, “us”, or “our”) uses cookies and similar
+      technologies to help the website function, improve security, remember
+      certain preferences, and understand how visitors interact with the
+      website where applicable.
+    </p>
+
+    <h2>What are cookies?</h2>
+
+    <p>
+      Cookies are small text files that a website may store on your device
+      through your web browser. They can help a website recognise a browser,
+      maintain a session, remember preferences, or provide information about
+      how the website is used.
+    </p>
+
+    <p>
+      Similar technologies may include local storage, pixels, tags, scripts,
+      and other tools that store or access information on a device.
+    </p>
+
+    <h2>Types of cookies</h2>
+
+    <p>
+      Cookies can be grouped according to their purpose. The categories below
+      describe the types that may be used on this website.
+    </p>
+
+    <div class="cookie-table-wrapper">
+      <table class="cookie-table">
+        <thead>
+          <tr>
+            <th>Category</th>
+            <th>Purpose</th>
+            <th>Consent</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr>
+            <td>Strictly necessary</td>
+            <td>
+              Helps the website operate, maintain security, support basic
+              navigation, or provide a function requested by you.
+            </td>
+            <td>
+              May be used where necessary for the website to function.
+            </td>
+          </tr>
+
+          <tr>
+            <td>Preferences</td>
+            <td>
+              Remembers choices such as language, display, or other settings.
+            </td>
+            <td>
+              May require consent depending on how the technology is used.
+            </td>
+          </tr>
+
+          <tr>
+            <td>Analytics</td>
+            <td>
+              Helps us understand visitor activity and improve the website.
+            </td>
+            <td>
+              Will be used only where appropriate notice and consent are
+              obtained.
+            </td>
+          </tr>
+
+          <tr>
+            <td>Marketing</td>
+            <td>
+              Supports advertising, campaign measurement, or personalised
+              marketing.
+            </td>
+            <td>
+              Will not be used without the appropriate consent.
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h2>Cookies currently used</h2>
+
+    <p>
+      The current Enrole. website is designed to operate without advertising
+      or marketing cookies. The page may use essential browser functionality
+      required for basic operation, security, form submission, or hosting.
+    </p>
+
+    <p>
+      The website may also load external resources, such as web fonts from
+      Google Fonts. A third-party resource may cause the visitor’s browser to
+      make a request to that provider. Third-party providers may process
+      technical information according to their own policies.
+    </p>
+
+    <p>
+      If we add analytics, advertising, personalisation, embedded media, or
+      other non-essential technologies, we will update this Cookie Policy and
+      provide any required consent choices before activating those
+      technologies.
+    </p>
+
+    <h2>Contact form and FormSubmit</h2>
+
+    <p>
+      The contact form sends submitted information through FormSubmit so that
+      Enrole. can receive and respond to your enquiry. FormSubmit may use
+      technical mechanisms necessary to operate its service, protect against
+      abuse, and process the form request.
+    </p>
+
+    <p>
+      The use of the contact form is also covered by our
+      <a href="privacy-policy.html">
+        Privacy Policy
+      </a>.
+    </p>
+
+    <h2>Managing cookies in your browser</h2>
+
+    <p>
+      Most browsers allow you to view, delete, block, or restrict cookies
+      through their settings. You can usually find these controls under
+      settings such as “Privacy”, “Security”, “Site settings”, or “Cookies”.
+    </p>
+
+    <p>
+      Blocking or deleting essential cookies may affect the operation of the
+      website or prevent some features from working correctly.
+    </p>
+
+    <p>
+      Browser controls apply to the device and browser where the settings are
+      changed. If you use multiple devices or browsers, you may need to
+      configure each one separately.
+    </p>
+
+    <h2>Third-party services</h2>
+
+    <p>
+      This website may link to or use third-party services, including
+      FormSubmit, WhatsApp, Instagram, Threads, Facebook, LinkedIn, GitHub,
+      hosting providers, security services, and other external platforms.
+    </p>
+
+    <p>
+      When you follow a link or interact with an embedded or third-party
+      service, that provider may use cookies or similar technologies under its
+      own policies. Enrole. does not control the independent cookie practices
+      of those providers.
+    </p>
+
+    <h2>Changes to this Cookie Policy</h2>
+
+    <p>
+      We may update this Cookie Policy when our website, technology,
+      providers, or legal obligations change.
+    </p>
+
+    <p>
+      The “Last updated” date at the top of this page indicates when the
+      current version took effect.
+    </p>
+
+    <h2>Related policies</h2>
+
+    <p>
+      You can read more about how Enrole. handles personal information in our
+      <a href="privacy-policy.html">
+        Privacy Policy
+      </a>.
+    </p>
+
+    <p>
+      The use of the Enrole. website is also governed by our
+      <a href="terms-of-service.html">
+        Terms of Service
+      </a>.
+    </p>
+
+    <h2>Contact us</h2>
+
+    <div class="contact-box">
+      <p>
+        If you have questions about this Cookie Policy or how the website uses
+        cookies, contact us at:
+      </p>
+
+      <p>
+        <strong>
+          <a href="mailto:enrole.gm@gmail.com">
+            enrole.gm@gmail.com
+          </a>
+        </strong>
+      </p>
+
+      <p>
+        You can also contact us on WhatsApp:
+        <a
+          href="https://wa.me/2207005974"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          +220 7005974
+        </a>.
+      </p>
+
+      <p>
+        <a href="index.html">
+          Return to the Enrole. main website
+        </a>
+      </p>
+    </div>
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+      <p>
+        © 2026 Enrole. — Software, thoughtfully engineered.
+      </p>
+
+      <nav class="footer-links" aria-label="Footer navigation">
+        <a href="index.html">Main site</a>
+
+        <a href="privacy-policy.html">
+          Privacy Policy
+        </a>
+
+        <a href="cookie-policy.html" aria-current="page">
+          Cookie Policy
+        </a>
+
+        <a href="terms-of-service.html">
+          Terms of Service
+        </a>
+      </nav>
+    </div>
+  </footer>
+</body>
+</html>
