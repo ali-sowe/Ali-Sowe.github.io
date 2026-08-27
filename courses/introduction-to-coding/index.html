@@ -1,43 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>Introduction to Coding — Enrole.</title>
+  <title>Products — Enrole.</title>
 
   <meta
     name="description"
-    content="A one-week, beginner-friendly Introduction to Coding class by Enrole. Learn through text-based WhatsApp lessons for D150."
-  />
+    content="Explore the software products Enrole. is building for Gambian schools and training organisations."
+  >
 
-  <meta name="theme-color" content="#1A242B" />
+  <meta name="theme-color" content="#1A242B">
 
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
   <link
-    href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@500&family=Manrope:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@500&family=Space+Grotesk:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500&display=swap"
     rel="stylesheet"
-  />
-  <link
-  href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
-  rel="stylesheet"
-/>
+  >
 
   <style>
     :root {
-      /* Enrole. colours */
-      --bg-primary: #1A242B;
-      --bg-plain: #151E24;
-      --bg-deep: #141D22;
-      --bg-darkest: #10181D;
+      --bg: #1A242B;
+      --surface: #151E24;
+      --surface-elevated: #141D22;
+      --bg-deep: #10181D;
+
       --accent: #DFFF4F;
-      --text-main: #F0F4F7;
+      --accent-dim: #C7E647;
+
+      --text: #F0F4F7;
       --text-muted: #94A3AE;
       --border: #2A3842;
 
-      /* Enrole. radii */
+      --success: #22C55E;
+      --warning: #F59E0B;
+      --info: #3B82F6;
+
+      --flag-red: #CE1126;
+      --flag-blue: #0C1C8C;
+      --flag-green: #3A7728;
+
       --radius-xs: 4px;
       --radius-sm: 8px;
       --radius-md: 12px;
@@ -45,7 +50,6 @@
       --radius-xl: 20px;
       --radius-full: 9999px;
 
-      /* Enrole. spacing */
       --space-1: 4px;
       --space-2: 8px;
       --space-3: 12px;
@@ -56,10 +60,17 @@
       --space-8: 64px;
       --space-9: 96px;
 
-      --container-width: 1100px;
+      --font-logo: "Inter", sans-serif;
+      --font-display: "Space Grotesk", sans-serif;
+      --font-body: "Manrope", sans-serif;
+      --font-mono: "IBM Plex Mono", monospace;
+
+      --max-width: 1120px;
     }
 
-    * {
+    *,
+    *::before,
+    *::after {
       box-sizing: border-box;
     }
 
@@ -68,19 +79,17 @@
     }
 
     body {
-      min-width: 320px;
       margin: 0;
-      background: var(--bg-primary);
-      color: var(--text-main);
-      font-family: "Manrope", sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--font-body);
+      font-size: 16px;
       line-height: 1.6;
       -webkit-font-smoothing: antialiased;
-      text-rendering: optimizeLegibility;
     }
 
-    img {
-      display: block;
-      max-width: 100%;
+    body.menu-open {
+      overflow: hidden;
     }
 
     a {
@@ -88,635 +97,987 @@
       text-decoration: none;
     }
 
-    .container {
-      width: min(calc(100% - 32px), var(--container-width));
-      margin: 0 auto;
+    button {
+      font: inherit;
+      cursor: pointer;
     }
 
-    /* Header */
-    .site-header {
-      border-bottom: 1px solid var(--border);
-      background: var(--bg-primary);
-    }
-
-    .header-inner {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      min-height: 64px;
-      gap: var(--space-4);
-    }
-
-    .wordmark {
-      font-family: "Inter", sans-serif;
-      font-size: 1.28rem;
-      font-weight: 500;
-      letter-spacing: -0.08em;
-    }
-
-    .wordmark span {
-      color: var(--accent);
-    }
-
-    .home-link {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 38px;
-  height: 38px;
-  border: 1px solid var(--border);
-  border-radius: var(--radius-sm);
-  background: var(--bg-deep);
-  color: var(--text-muted);
-  font-size: 1.1rem;
-  transition:
-    color 160ms ease,
-    border-color 160ms ease,
-    background 160ms ease,
-    transform 160ms ease;
-}
-
-.home-link:hover {
-  border-color: var(--accent);
-  background: rgba(223, 255, 79, 0.08);
-  color: var(--accent);
-  transform: translateY(-1px);
-}
-
-.home-link:focus-visible {
-  outline: 2px solid var(--accent);
-  outline-offset: 3px;
-}
-
-    /* Shared elements */
-    .eyebrow {
-      display: inline-flex;
-      align-items: center;
-      gap: var(--space-2);
-      margin: 0 0 var(--space-3);
-      color: var(--accent);
-      font-family: "IBM Plex Mono", monospace;
-      font-size: 0.69rem;
-      font-weight: 500;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-    }
-
-    .eyebrow::before {
-      width: 7px;
-      height: 7px;
-      content: "";
-      border-radius: var(--radius-full);
-      background: var(--accent);
-    }
-
-    h1,
-    h2,
-    h3,
-    p {
-      margin-top: 0;
-    }
-
-    h1,
-    h2 {
-      font-family: "Space Grotesk", sans-serif;
-      font-weight: 600;
-      letter-spacing: -0.06em;
-      line-height: 1.04;
-    }
-
-    h1 {
-      margin-bottom: var(--space-4);
-      font-size: clamp(2.65rem, 13vw, 4.5rem);
-    }
-
-    h1 .accent-text {
-      color: var(--accent);
-    }
-
-    h2 {
-      margin-bottom: var(--space-3);
-      font-size: clamp(1.9rem, 8vw, 2.7rem);
-    }
-
-    .button {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      min-height: 50px;
-      width: 100%;
-      padding: 0 var(--space-5);
-      border: 1px solid transparent;
-      border-radius: var(--radius-sm);
-      font-family: "Manrope", sans-serif;
-      font-size: 0.9rem;
-      font-weight: 800;
-      text-align: center;
-      transition: transform 160ms ease, background 160ms ease;
-    }
-
-    .button:hover {
-      transform: translateY(-2px);
-    }
-
-    .button-primary {
-      background: var(--accent);
-      color: var(--bg-darkest);
-    }
-
-    .button-primary:hover {
-      background: #e8ff85;
-    }
-
-    /* Hero */
-    .hero {
-      overflow: hidden;
-      padding: var(--space-7) 0;
-      border-bottom: 1px solid var(--border);
-      background:
-        radial-gradient(
-          circle at 100% 0%,
-          rgba(223, 255, 79, 0.12),
-          transparent 34%
-        ),
-        var(--bg-primary);
-    }
-
-    .hero-copy {
-      max-width: 720px;
-    }
-
-    .hero-description {
-      max-width: 590px;
-      margin-bottom: var(--space-5);
-      color: var(--text-muted);
-      font-size: 1rem;
-    }
-
-    .course-meta {
-      display: flex;
-      flex-wrap: wrap;
-      gap: var(--space-2);
-      margin-bottom: var(--space-5);
-    }
-
-    .meta-chip {
-      padding: 8px 10px;
-      border: 1px solid var(--border);
-      border-radius: var(--radius-full);
-      background: rgba(16, 24, 29, 0.42);
-      color: var(--text-muted);
-      font-family: "IBM Plex Mono", monospace;
-      font-size: 0.68rem;
-      line-height: 1.2;
-    }
-
-    .meta-chip strong {
-      color: var(--text-main);
-      font-weight: 500;
-    }
-
-    /* Screenshot section */
-    .project-section {
-      padding: var(--space-7) 0;
-      background: var(--bg-plain);
-    }
-
-    .project-section .section-intro {
-      max-width: 640px;
-      margin-bottom: var(--space-5);
-    }
-
-    .section-intro p {
-      margin-bottom: 0;
-      color: var(--text-muted);
-      font-size: 0.96rem;
-    }
-
-    .project-preview {
-      overflow: hidden;
-      border: 1px solid var(--border);
-      border-radius: var(--radius-md);
-      background: var(--bg-darkest);
-    }
-
-    .browser-bar {
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      min-height: 40px;
-      padding: 0 var(--space-4);
-      border-bottom: 1px solid var(--border);
-      background: #10181d;
-    }
-
-    .browser-dot {
-      width: 8px;
-      height: 8px;
-      border-radius: var(--radius-full);
-      background: #46545e;
-    }
-
-    .browser-dot:first-child {
-      background: #dfff4f;
-    }
-
-    .browser-label {
-      margin-left: var(--space-2);
-      overflow: hidden;
-      color: var(--text-muted);
-      font-family: "IBM Plex Mono", monospace;
-      font-size: 0.65rem;
-      text-overflow: ellipsis;
-      white-space: nowrap;
-    }
-
-    .project-image-wrap {
-      position: relative;
-      min-height: 220px;
-      aspect-ratio: 16 / 10;
-      background:
-        linear-gradient(rgba(16, 24, 29, 0.76), rgba(16, 24, 29, 0.76)),
-        repeating-linear-gradient(
-          90deg,
-          transparent 0,
-          transparent 39px,
-          rgba(42, 56, 66, 0.35) 40px
-        ),
-        repeating-linear-gradient(
-          0deg,
-          transparent 0,
-          transparent 39px,
-          rgba(42, 56, 66, 0.35) 40px
-        );
-    }
-
-    .project-image-wrap img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-
-    .image-placeholder {
-      position: absolute;
-      inset: 0;
-      display: grid;
-      place-items: center;
-      padding: var(--space-5);
-      color: var(--text-muted);
-      font-family: "IBM Plex Mono", monospace;
-      font-size: 0.75rem;
-      line-height: 1.7;
-      text-align: center;
-    }
-
-    .image-placeholder code {
-      color: var(--accent);
-      font-family: inherit;
-    }
-
-    /*
-      IMPORTANT:
-      After adding your screenshot, delete the .image-placeholder div below.
-      Keep the <img> element and change its src if you use another filename.
-    */
-
-    /* Learning section */
-    .details {
-      padding: var(--space-7) 0;
-      border-top: 1px solid var(--border);
-      background: var(--bg-primary);
-    }
-
-    .details-copy {
-      max-width: 600px;
-      margin-bottom: var(--space-6);
-    }
-
-    .details-copy p {
-      margin-bottom: 0;
-      color: var(--text-muted);
-      font-size: 0.96rem;
-    }
-
-    .learning-list {
-      display: grid;
-      gap: var(--space-3);
-      margin: 0;
+    ul {
       padding: 0;
+      margin: 0;
       list-style: none;
     }
 
-    .learning-list li {
-      position: relative;
-      padding: var(--space-4) var(--space-5) var(--space-4) 52px;
-      border: 1px solid var(--border);
-      border-radius: var(--radius-md);
-      background: var(--bg-deep);
-      color: var(--text-main);
-      font-size: 0.9rem;
+    .wrap {
+      width: min(100% - 48px, var(--max-width));
+      margin-inline: auto;
+    }
+
+    .wordmark {
+      font-family: var(--font-logo);
+      font-size: 20px;
+      font-weight: 500;
+      letter-spacing: -0.04em;
+    }
+
+    .wordmark .dot {
+      color: var(--accent);
+    }
+
+    .eyebrow {
+      margin: 0 0 var(--space-4);
+      color: var(--accent);
+      font-family: var(--font-mono);
+      font-size: 12px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .flag-rule {
+      width: 100%;
+      height: 3px;
+      background: linear-gradient(
+        90deg,
+        var(--flag-red) 0 32%,
+        var(--text) 32% 34%,
+        var(--flag-blue) 34% 66%,
+        var(--text) 66% 68%,
+        var(--flag-green) 68% 100%
+      );
+      opacity: 0.9;
+    }
+
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
+
+    :focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 3px;
+    }
+
+    /* Navigation */
+
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      border-bottom: 1px solid var(--border);
+      background: rgba(26, 36, 43, 0.88);
+      backdrop-filter: blur(12px);
+    }
+
+    .nav-inner {
+      display: flex;
+      min-height: 72px;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: var(--space-6);
+      color: var(--text-muted);
+      font-size: 14px;
+    }
+
+    .nav-links a {
+      transition:
+        color 0.2s ease,
+        transform 0.2s ease;
+    }
+
+    .nav-links a:hover,
+    .nav-links a:focus-visible,
+    .nav-links a[aria-current="page"] {
+      color: var(--text);
+    }
+
+    .nav-cta {
+      padding: var(--space-2) var(--space-4);
+      border-radius: var(--radius-sm);
+      background: var(--accent);
+      color: var(--bg-deep) !important;
       font-weight: 700;
     }
 
-    .learning-list li::before {
-      position: absolute;
-      top: 16px;
-      left: 20px;
+    .nav-cta:hover,
+    .nav-cta:focus-visible {
+      background: var(--accent-dim);
+      transform: translateY(-1px);
+    }
+
+    .nav-toggle {
+      display: none;
+      width: 40px;
+      height: 40px;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      background: transparent;
+      color: var(--text);
+    }
+
+    .nav-toggle svg {
+      width: 19px;
+      height: 19px;
+    }
+
+    /* Hero */
+
+    .hero {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: var(--space-9) 24px var(--space-8);
+    }
+
+    .hero h1 {
+      max-width: 14ch;
+      margin: 0 0 var(--space-5);
+      font-family: var(--font-display);
+      font-size: clamp(42px, 7vw, 76px);
+      font-weight: 700;
+      line-height: 1.04;
+      letter-spacing: -0.03em;
+    }
+
+    .hero-sub {
+      max-width: 58ch;
+      margin: 0;
+      color: var(--text-muted);
+      font-size: clamp(16px, 2vw, 19px);
+    }
+
+    /* General */
+
+    section {
+      padding: var(--space-9) 0;
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(18px);
+      transition:
+        opacity 0.6s ease,
+        transform 0.6s ease;
+    }
+
+    .reveal.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    h2 {
+      margin: 0 0 var(--space-5);
+      font-family: var(--font-display);
+      font-size: clamp(28px, 3.6vw, 40px);
+      font-weight: 600;
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+    }
+
+    /* Products */
+
+    .products-section {
+      background: var(--surface);
+    }
+
+    .section-intro {
+      max-width: 58ch;
+      margin: 0 0 var(--space-7);
+      color: var(--text-muted);
+    }
+
+    .product-list {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-4);
+    }
+
+    .product-item {
+      overflow: hidden;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      background: var(--surface-elevated);
+    }
+
+    .product-summary {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      align-items: center;
+      gap: var(--space-5);
+      padding: var(--space-6);
+      cursor: pointer;
+      list-style: none;
+      transition: background 0.2s ease;
+    }
+
+    .product-summary::-webkit-details-marker {
+      display: none;
+    }
+
+    .product-summary:hover {
+      background: rgba(223, 255, 79, 0.035);
+    }
+
+    .product-title-area {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-3);
+    }
+
+    .product-name-row {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: var(--space-3);
+    }
+
+    .product-name {
+      margin: 0;
+      font-family: var(--font-display);
+      font-size: clamp(23px, 3vw, 32px);
+      font-weight: 600;
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+    }
+
+    .status {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      padding: 5px 10px;
+      border: 1px solid rgba(245, 158, 11, 0.3);
+      border-radius: var(--radius-full);
+      background: rgba(245, 158, 11, 0.1);
+      color: var(--warning);
+      font-family: var(--font-mono);
+      font-size: 11px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    .status::before {
+      width: 6px;
+      height: 6px;
+      border-radius: var(--radius-full);
+      background: currentColor;
+      content: "";
+    }
+
+    .status.client {
+      border-color: rgba(59, 130, 246, 0.3);
+      background: rgba(59, 130, 246, 0.1);
+      color: var(--info);
+    }
+
+    .product-short {
+      margin: 0;
+      color: var(--text-muted);
+      font-size: 14px;
+    }
+
+    .expand-button {
+      display: flex;
+      flex: 0 0 auto;
+      width: 40px;
+      height: 40px;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      color: var(--text-muted);
+      transition:
+        border-color 0.2s ease,
+        color 0.2s ease,
+        transform 0.2s ease;
+    }
+
+    .expand-button svg {
+      width: 18px;
+      height: 18px;
+    }
+
+    details[open] .expand-button {
+      border-color: var(--accent);
       color: var(--accent);
-      content: "✓";
-      font-family: "IBM Plex Mono", monospace;
-      font-size: 0.85rem;
+      transform: rotate(180deg);
+    }
+
+    .product-details {
+      padding: 0 var(--space-6) var(--space-6);
+      border-top: 1px solid var(--border);
+    }
+
+    .product-description {
+      max-width: 68ch;
+      margin: var(--space-6) 0;
+      color: var(--text-muted);
+    }
+
+    .product-description strong {
+      color: var(--text);
+    }
+
+    .product-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-6) var(--space-8);
+      padding-top: var(--space-5);
+      border-top: 1px solid var(--border);
+    }
+
+    .meta-label {
+      display: block;
+      margin-bottom: var(--space-1);
+      color: var(--text-muted);
+      font-family: var(--font-mono);
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    .meta-value {
+      font-size: 15px;
+      font-weight: 700;
     }
 
     /* CTA */
+
     .cta-section {
-      padding: var(--space-7) 0;
-      border-top: 1px solid var(--border);
-      background: var(--bg-darkest);
+      background: var(--bg-deep);
     }
 
     .cta-card {
-      padding: var(--space-5);
+      padding: var(--space-8);
       border: 1px solid var(--border);
       border-radius: var(--radius-lg);
-      background:
-        radial-gradient(
-          circle at 100% 0%,
-          rgba(223, 255, 79, 0.14),
-          transparent 34%
-        ),
-        var(--bg-primary);
+      background: var(--surface);
     }
 
     .cta-card h2 {
-      max-width: 620px;
+      max-width: 16ch;
     }
 
     .cta-card p {
-      max-width: 570px;
-      margin-bottom: var(--space-5);
+      max-width: 58ch;
+      margin: 0 0 var(--space-6);
       color: var(--text-muted);
-      font-size: 0.96rem;
     }
 
-    .cta-note {
-      display: block;
-      margin-top: var(--space-3);
-      color: var(--text-muted);
-      font-family: "IBM Plex Mono", monospace;
-      font-size: 0.67rem;
+    .btn {
+      display: inline-flex;
+      min-height: 46px;
+      align-items: center;
+      justify-content: center;
+      gap: var(--space-2);
+      padding: var(--space-3) var(--space-6);
+      border: 1px solid transparent;
+      border-radius: var(--radius-sm);
+      font-size: 15px;
+      font-weight: 700;
+      transition:
+        background 0.2s ease,
+        border-color 0.2s ease,
+        transform 0.2s ease;
+    }
+
+    .btn svg {
+      width: 16px;
+      height: 16px;
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: var(--bg-deep);
+    }
+
+    .btn-primary:hover,
+    .btn-primary:focus-visible {
+      background: var(--accent-dim);
+      transform: translateY(-1px);
     }
 
     /* Footer */
-    .footer {
-      padding: var(--space-5) 0;
-      border-top: 1px solid var(--border);
-      background: var(--bg-darkest);
+
+    footer {
+      background: var(--surface);
     }
 
     .footer-inner {
       display: flex;
-      flex-direction: column;
-      gap: var(--space-2);
+      flex-wrap: wrap;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: var(--space-6);
+      padding: var(--space-8) 0 var(--space-6);
     }
 
-    .footer p,
-    .footer a {
-      margin: 0;
+    .footer-tagline {
+      margin: var(--space-2) 0 0;
       color: var(--text-muted);
-      font-size: 0.75rem;
+      font-size: 14px;
     }
 
-    .footer a:hover {
+    .footer-links {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: var(--space-3);
+    }
+
+    .contact-link {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-2);
+      color: var(--accent);
+      font-family: var(--font-mono);
+      font-size: 14px;
+    }
+
+    .contact-link svg {
+      width: 15px;
+      height: 15px;
+    }
+
+    .legal-links {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+      gap: var(--space-4);
+      margin-top: var(--space-3);
+      font-size: 13px;
+    }
+
+    .legal-links a {
+      color: var(--text-muted);
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+
+    .legal-links a:hover,
+    .legal-links a:focus-visible {
       color: var(--accent);
     }
 
-    /* Tablet and desktop enhancements */
-    @media (min-width: 640px) {
-      .container {
-        width: min(calc(100% - 48px), var(--container-width));
+    .copyright {
+      margin: 0;
+      padding: var(--space-5) 0;
+      border-top: 1px solid var(--border);
+      color: var(--text-muted);
+      font-size: 12px;
+    }
+
+    /* Responsive */
+
+    @media (max-width: 760px) {
+      .nav-toggle {
+        display: inline-flex;
       }
 
-      .header-inner {
-        min-height: 72px;
+      .nav-links {
+        position: fixed;
+        inset: 72px 0 auto;
+        display: none;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: var(--space-4);
+        padding: var(--space-5) 24px var(--space-6);
+        border-bottom: 1px solid var(--border);
+        background: var(--surface);
       }
 
-      .back-link {
-        font-size: 0.84rem;
+      .nav-links.open {
+        display: flex;
       }
 
-      .button {
-        width: auto;
+      .nav-links a {
+        width: 100%;
+        padding: var(--space-2) 0;
       }
 
-      .hero {
-        padding: var(--space-8) 0;
-      }
-
-      .project-section,
-      .details,
-      .cta-section {
-        padding: var(--space-8) 0;
-      }
-
-      .cta-card {
-        padding: var(--space-7);
-      }
-
-      .footer-inner {
-        flex-direction: row;
-        align-items: center;
-        justify-content: space-between;
+      .nav-cta {
+        width: auto !important;
+        padding-inline: var(--space-4) !important;
       }
     }
 
-    @media (min-width: 840px) {
+    @media (max-width: 720px) {
+      .product-summary,
+      .product-details {
+        padding-left: var(--space-5);
+        padding-right: var(--space-5);
+      }
+
+      .product-meta {
+        flex-direction: column;
+        gap: var(--space-4);
+      }
+
+      .cta-card {
+        padding: var(--space-6);
+      }
+    }
+
+    @media (max-width: 600px) {
+      .wrap {
+        width: min(100% - 32px, var(--max-width));
+      }
+
       .hero {
-        padding: var(--space-9) 0;
+        padding-inline: 16px;
       }
 
-      .project-section,
-      .details,
-      .cta-section {
-        padding: var(--space-9) 0;
+      .btn {
+        width: 100%;
       }
 
-      .details-layout {
-        display: grid;
-        grid-template-columns: minmax(260px, 0.8fr) minmax(380px, 1.2fr);
-        gap: var(--space-8);
-        align-items: start;
+      .footer-inner {
+        flex-direction: column;
       }
 
-      .details-copy {
-        margin-bottom: 0;
+      .footer-links {
+        align-items: flex-start;
       }
 
-      .learning-list {
-        grid-template-columns: 1fr 1fr;
+      .legal-links {
+        justify-content: flex-start;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+
+      *,
+      *::before,
+      *::after {
+        animation-duration: 0.001ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.001ms !important;
+      }
+
+      .reveal {
+        opacity: 1;
+        transform: none;
       }
     }
   </style>
 </head>
 
 <body>
-  <header class="site-header">
-    <div class="container header-inner">
-      <a href="https://enrole.gm/" class="wordmark" aria-label="Enrole home">
-        Enrole<span>.</span>
+  <header class="nav">
+    <div class="nav-inner wrap">
+      <a class="wordmark" href="https://enrole.gm/" aria-label="Enrole. home">
+        Enrole<span class="dot">.</span>
       </a>
-      <a
-  href="https://enrole.gm/"
-  class="home-link"
-  aria-label="Go to Enrole home"
-  title="Go to Enrole home"
->
-  <i class="bx bx-home-alt-2" aria-hidden="true"></i>
-</a>
+
+      <nav class="nav-links" id="navLinks" aria-label="Main navigation">
+        <a href="https://enrole.gm/#mission">Mission</a>
+        <a href="https://enrole.gm/#build">What we build</a>
+        <a href="https://enrole.gm/products/" aria-current="page">Products</a>
+        <a href="https://enrole.gm/#vision">Vision</a>
+        <a class="nav-cta" href="https://enrole.gm/#contact">Get in touch</a>
+        <a href="https://enrole.gm/courses/introduction-to-coding">
+          Courses > Coding
+        </a>
+      </nav>
+
+      <button
+        class="nav-toggle"
+        id="navToggle"
+        type="button"
+        aria-label="Open navigation menu"
+        aria-expanded="false"
+        aria-controls="navLinks"
+      >
+        <svg
+          id="menuIcon"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          aria-hidden="true"
+        >
+          <line x1="3" y1="6" x2="21" y2="6"></line>
+          <line x1="3" y1="12" x2="21" y2="12"></line>
+          <line x1="3" y1="18" x2="21" y2="18"></line>
+        </svg>
+
+        <svg
+          id="closeIcon"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          aria-hidden="true"
+          hidden
+        >
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
     </div>
   </header>
 
   <main>
     <section class="hero">
-      <div class="container">
-        <div class="hero-copy">
-          <span class="eyebrow">Enrole. Learning</span>
+      <p class="eyebrow">Enrole. products</p>
 
-          <h1>
-            Introduction<br />
-            to <span class="accent-text">Coding.</span>
-          </h1>
+      <h1>Software for the systems that matter.</h1>
 
-          <p class="hero-description">
-            A one-week, text-based WhatsApp class for beginners who want to
-            understand coding, how websites work, and how to take their first
-            step into technology.
-          </p>
-
-          <div class="course-meta">
-            <span class="meta-chip"><strong>Duration:</strong> 1 week</span>
-            <span class="meta-chip"><strong>Fee:</strong> D150</span>
-            <span class="meta-chip"><strong>Platform:</strong> WhatsApp</span>
-            <span class="meta-chip"><strong>Level:</strong> Beginner</span>
-          </div>
-
-          <!-- Replace 220XXXXXXXX with your actual WhatsApp number -->
-          <a
-            class="button button-primary"
-            href="https://wa.me/2207005974?text=Hello%20Enrole.%20I%20would%20like%20to%20register%20for%20the%20Introduction%20to%20Coding%20class.%0A%0AName%3A%0AWhatsApp%20Number%3A%0ADo%20you%20have%20a%20laptop%3F%20Yes%20%2F%20No%0AHave%20you%20coded%20before%3F%20Yes%20%2F%20No"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Register on WhatsApp
-          </a>
-        </div>
-      </div>
+      <p class="hero-sub">
+        We build dependable digital infrastructure around real operational
+        problems—starting with education and training organisations in
+        The Gambia.
+      </p>
     </section>
 
-    <section class="project-section">
-      <div class="container">
-        <div class="section-intro">
-          <span class="eyebrow">Build real things</span>
+    <div class="flag-rule" aria-hidden="true"></div>
 
-          <h2>Code is used to solve problems.</h2>
+    <section class="products-section">
+      <div class="wrap">
+        <p class="eyebrow reveal">In development</p>
 
-          <p>
-            During the class, you will see how developers use code to build
-            real websites, applications, and digital systems.
-          </p>
+        <h2 class="reveal">What we are building.</h2>
+
+        <p class="section-intro reveal">
+          Explore the products currently being engineered by Enrole. Select a
+          product to see who it is for, what it solves, and its current status.
+        </p>
+
+        <div class="product-list">
+          <details class="product-item reveal" open>
+            <summary class="product-summary">
+              <div class="product-title-area">
+                <div class="product-name-row">
+                  <h3 class="product-name">School ERP</h3>
+
+                  <span class="status">Flagship product · Building now</span>
+                </div>
+
+                <p class="product-short">
+                  One dependable operating system for Gambian schools.
+                </p>
+              </div>
+
+              <span class="expand-button" aria-hidden="true">
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
+              </span>
+            </summary>
+
+            <div class="product-details">
+              <p class="product-description">
+                A complete school management system built for Gambian schools.
+                It brings <strong>student records, academics, fees,
+                communication, and day-to-day administration</strong> into one
+                organised, dependable platform.
+              </p>
+
+              <div class="product-meta">
+                <div>
+                  <span class="meta-label">For</span>
+                  <span class="meta-value">
+                    Gambian schools and education providers
+                  </span>
+                </div>
+
+                <div>
+                  <span class="meta-label">Purpose</span>
+                  <span class="meta-value">
+                    Run school operations in one place
+                  </span>
+                </div>
+
+                <div>
+                  <span class="meta-label">Platform</span>
+                  <span class="meta-value">
+                    Web, mobile, and desktop
+                  </span>
+                </div>
+
+                <div>
+                  <span class="meta-label">Built by</span>
+                  <span class="meta-value">Enrole.</span>
+                </div>
+              </div>
+            </div>
+          </details>
+
+          <details class="product-item reveal">
+            <summary class="product-summary">
+              <div class="product-title-area">
+                <div class="product-name-row">
+                  <h3 class="product-name">Enrole. for BeGlitch</h3>
+
+                  <span class="status client">
+                    Client work · In development
+                  </span>
+                </div>
+
+                <p class="product-short">
+                  A digital enrolment and applicant-management platform.
+                </p>
+              </div>
+
+              <span class="expand-button" aria-hidden="true">
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
+              </span>
+            </summary>
+
+            <div class="product-details">
+              <p class="product-description">
+                A complete digital enrolment and applicant-management platform
+                built for <strong>BeGlitch</strong>, a Gambian multimedia and
+                creative-tech training organisation. It turns applications,
+                candidate updates, announcements, and communication into one
+                guided and organised workflow.
+              </p>
+
+              <div class="product-meta">
+                <div>
+                  <span class="meta-label">For</span>
+                  <span class="meta-value">
+                    BeGlitch — September 2026 course
+                  </span>
+                </div>
+
+                <div>
+                  <span class="meta-label">Includes</span>
+                  <span class="meta-value">
+                    Applications, candidate status, messaging, announcements,
+                    and administration
+                  </span>
+                </div>
+
+                <div>
+                  <span class="meta-label">Status</span>
+                  <span class="meta-value">
+                    Backend built — frontend integration underway
+                  </span>
+                </div>
+
+                <div>
+                  <span class="meta-label">Built by</span>
+                  <span class="meta-value">Enrole.</span>
+                </div>
+              </div>
+            </div>
+          </details>
         </div>
-
-        <div class="project-preview">
-          <div class="browser-bar" aria-hidden="true">
-            <span class="browser-dot"></span>
-            <span class="browser-dot"></span>
-            <span class="browser-dot"></span>
-            <span class="browser-label">enrole.gm — project preview</span>
-          </div>
-
-          <div class="project-image-wrap">
-            <!--
-              PLACEHOLDER IMAGE:
-              1. Create this folder: assets
-              2. Add your screenshot as: project-preview.jpg
-              3. The final path will be:
-                 /courses/introduction-to-coding/assets/project-preview.jpg
-              4. Delete the .image-placeholder div after your image is ready.
-            -->
-            <img
-              src="assets/project-preview.png"
-              alt="Screenshot of a project built by Enrole."
-              width="1600"
-              height="1000"
-              loading="lazy"
-            />
-
-
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="details">
-      <div class="container details-layout">
-        <div class="details-copy">
-          <span class="eyebrow">What you will learn</span>
-
-          <h2>Start with the foundations.</h2>
-
-          <p>
-            This is a beginner introduction, not a full programming course.
-            You will gain clarity, try simple code, and know where to continue
-            if you decide coding is for you.
-          </p>
-        </div>
-
-        <ul class="learning-list">
-          <li>What coding is and what programmers build</li>
-          <li>How websites and mobile apps work</li>
-          <li>Frontend, backend, and databases explained</li>
-          <li>The basic tools developers use</li>
-          <li>Introduction to HTML and CSS</li>
-          <li>How to create your first simple webpage</li>
-        </ul>
       </div>
     </section>
 
     <section class="cta-section">
-      <div class="container">
-        <div class="cta-card">
-          <span class="eyebrow">Start here</span>
+      <div class="wrap">
+        <div class="cta-card reveal">
+          <p class="eyebrow">Start a conversation</p>
 
-          <h2>Ready to understand coding?</h2>
+          <h2>What can Enrole. help you improve?</h2>
 
           <p>
-            Register through WhatsApp. You will receive payment details and
-            class-group information after confirming your place.
+            If your school, business, or institution has an operational problem
+            worth solving, tell us what you are trying to improve, organise, or
+            build.
           </p>
 
-          <!-- Replace 220XXXXXXXX with your actual WhatsApp number -->
-          <a
-            class="button button-primary"
-            href="https://wa.me/2207005974?text=Hello%20Enrole.%20I%20would%20like%20to%20register%20for%20the%20Introduction%20to%20Coding%20class.%0A%0AName%3A%0AWhatsApp%20Number%3A%0ADo%20you%20have%20a%20laptop%3F%20Yes%20%2F%20No%0AHave%20you%20coded%20before%3F%20Yes%20%2F%20No"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Register on WhatsApp
-          </a>
+          <a class="btn btn-primary" href="https://enrole.gm/#contact">
+            Contact Enrole.
 
-          <span class="cta-note">
-            D150 · One week · Text-based WhatsApp lessons · No video calls
-          </span>
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+            >
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+              <polyline points="12 5 19 12 12 19"></polyline>
+            </svg>
+          </a>
         </div>
       </div>
     </section>
   </main>
 
-  <footer class="footer">
-    <div class="container footer-inner">
-      <p>© 2026 Enrole. Software, thoughtfully engineered.</p>
-      <a href="https://enrole.gm/">enrole.gm</a>
+  <footer>
+    <div class="flag-rule" aria-hidden="true"></div>
+
+    <div class="wrap">
+      <div class="footer-inner">
+        <div>
+          <p class="wordmark">
+            Enrole<span class="dot">.</span>
+          </p>
+
+          <p class="footer-tagline">
+            Trusted digital infrastructure for The Gambia.
+          </p>
+        </div>
+
+        <div class="footer-links">
+          <a
+            class="contact-link"
+            href="mailto:enrole.gm@gmail.com"
+            aria-label="Email Enrole."
+          >
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.8"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+            >
+              <rect x="2" y="4" width="20" height="16" rx="2"></rect>
+              <path d="m22 6-10 7L2 6"></path>
+            </svg>
+
+            enrole.gm@gmail.com
+          </a>
+
+          <a
+            class="contact-link"
+            href="https://wa.me/2207005974"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Contact Enrole. on WhatsApp"
+          >
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.8"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+            >
+              <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path>
+            </svg>
+
+            WhatsApp: +220 7005974
+          </a>
+
+          <div class="legal-links" aria-label="Legal links">
+            <a href="../privacy-policy.html">Privacy Policy</a>
+            <a href="../cookie-policy.html">Cookie Policy</a>
+            <a href="../terms-of-service.html">Terms of Service</a>
+          </div>
+        </div>
+      </div>
+
+      <p class="copyright">
+        © 2026 Enrole. — Software, thoughtfully engineered.
+      </p>
     </div>
   </footer>
+
+  <script>
+    const navToggle = document.getElementById("navToggle");
+    const navLinks = document.getElementById("navLinks");
+    const menuIcon = document.getElementById("menuIcon");
+    const closeIcon = document.getElementById("closeIcon");
+
+    function setMenuState(isOpen) {
+      navLinks.classList.toggle("open", isOpen);
+      document.body.classList.toggle("menu-open", isOpen);
+
+      navToggle.setAttribute("aria-expanded", String(isOpen));
+
+      navToggle.setAttribute(
+        "aria-label",
+        isOpen ? "Close navigation menu" : "Open navigation menu"
+      );
+
+      menuIcon.hidden = isOpen;
+      closeIcon.hidden = !isOpen;
+    }
+
+    navToggle.addEventListener("click", function () {
+      const isOpen = navLinks.classList.contains("open");
+      setMenuState(!isOpen);
+    });
+
+    navLinks.querySelectorAll("a").forEach(function (link) {
+      link.addEventListener("click", function () {
+        setMenuState(false);
+      });
+    });
+
+    document.addEventListener("keydown", function (event) {
+      if (event.key === "Escape") {
+        setMenuState(false);
+      }
+    });
+
+    const revealElements = document.querySelectorAll(".reveal");
+
+    const prefersReducedMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)"
+    ).matches;
+
+    if (
+      prefersReducedMotion ||
+      !("IntersectionObserver" in window)
+    ) {
+      revealElements.forEach(function (element) {
+        element.classList.add("is-visible");
+      });
+    } else {
+      const observer = new IntersectionObserver(
+        function (entries) {
+          entries.forEach(function (entry) {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("is-visible");
+              observer.unobserve(entry.target);
+            }
+          });
+        },
+        {
+          threshold: 0.15
+        }
+      );
+
+      revealElements.forEach(function (element) {
+        observer.observe(element);
+      });
+    }
+  </script>
 </body>
 </html>
