@@ -20,6 +20,10 @@
     href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@500&family=Manrope:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap"
     rel="stylesheet"
   />
+  <link
+  href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+  rel="stylesheet"
+/>
 
   <style>
     :root {
@@ -114,17 +118,35 @@
       color: var(--accent);
     }
 
-    .back-link {
-      color: var(--text-muted);
-      font-size: 0.78rem;
-      font-weight: 700;
-      white-space: nowrap;
-      transition: color 160ms ease;
-    }
+    .home-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  background: var(--bg-deep);
+  color: var(--text-muted);
+  font-size: 1.1rem;
+  transition:
+    color 160ms ease,
+    border-color 160ms ease,
+    background 160ms ease,
+    transform 160ms ease;
+}
 
-    .back-link:hover {
-      color: var(--accent);
-    }
+.home-link:hover {
+  border-color: var(--accent);
+  background: rgba(223, 255, 79, 0.08);
+  color: var(--accent);
+  transform: translateY(-1px);
+}
+
+.home-link:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
 
     /* Shared elements */
     .eyebrow {
@@ -543,6 +565,14 @@
       <a href="https://enrole.gm/" class="wordmark" aria-label="Enrole home">
         Enrole<span>.</span>
       </a>
+      <a
+  href="https://enrole.gm/"
+  class="home-link"
+  aria-label="Go to Enrole home"
+  title="Go to Enrole home"
+>
+  <i class="bx bx-home-alt-2" aria-hidden="true"></i>
+</a>
     </div>
   </header>
 
