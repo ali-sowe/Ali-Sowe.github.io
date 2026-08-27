@@ -23,7 +23,7 @@
 
   <style>
     :root {
-      /* Enrole. Brand colours */
+      /* Enrole. colours */
       --bg-primary: #1A242B;
       --bg-plain: #151E24;
       --bg-deep: #141D22;
@@ -33,7 +33,7 @@
       --text-muted: #94A3AE;
       --border: #2A3842;
 
-      /* Enrole. Border radius */
+      /* Enrole. radii */
       --radius-xs: 4px;
       --radius-sm: 8px;
       --radius-md: 12px;
@@ -41,7 +41,7 @@
       --radius-xl: 20px;
       --radius-full: 9999px;
 
-      /* Enrole. Spacing */
+      /* Enrole. spacing */
       --space-1: 4px;
       --space-2: 8px;
       --space-3: 12px;
@@ -52,7 +52,7 @@
       --space-8: 64px;
       --space-9: 96px;
 
-      --container: 1080px;
+      --container-width: 1100px;
     }
 
     * {
@@ -64,12 +64,19 @@
     }
 
     body {
+      min-width: 320px;
       margin: 0;
       background: var(--bg-primary);
       color: var(--text-main);
       font-family: "Manrope", sans-serif;
       line-height: 1.6;
       -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
     }
 
     a {
@@ -78,38 +85,40 @@
     }
 
     .container {
-      width: min(calc(100% - 40px), var(--container));
+      width: min(calc(100% - 32px), var(--container-width));
       margin: 0 auto;
     }
 
     /* Header */
-    .header {
+    .site-header {
       border-bottom: 1px solid var(--border);
-      background: rgba(26, 36, 43, 0.94);
+      background: var(--bg-primary);
     }
 
     .header-inner {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      min-height: 72px;
+      min-height: 64px;
+      gap: var(--space-4);
     }
 
-    .logo {
+    .wordmark {
       font-family: "Inter", sans-serif;
-      font-size: 1.35rem;
+      font-size: 1.28rem;
       font-weight: 500;
       letter-spacing: -0.08em;
     }
 
-    .logo-dot {
+    .wordmark span {
       color: var(--accent);
     }
 
     .back-link {
       color: var(--text-muted);
-      font-size: 0.875rem;
-      font-weight: 600;
+      font-size: 0.78rem;
+      font-weight: 700;
+      white-space: nowrap;
       transition: color 160ms ease;
     }
 
@@ -117,15 +126,15 @@
       color: var(--accent);
     }
 
-    /* Utility label */
+    /* Shared elements */
     .eyebrow {
       display: inline-flex;
       align-items: center;
       gap: var(--space-2);
-      margin-bottom: var(--space-4);
+      margin: 0 0 var(--space-3);
       color: var(--accent);
       font-family: "IBM Plex Mono", monospace;
-      font-size: 0.73rem;
+      font-size: 0.69rem;
       font-weight: 500;
       letter-spacing: 0.08em;
       text-transform: uppercase;
@@ -139,23 +148,6 @@
       background: var(--accent);
     }
 
-    /* Hero */
-    .hero {
-      padding: var(--space-9) 0;
-      border-bottom: 1px solid var(--border);
-      background:
-        radial-gradient(
-          circle at 85% 10%,
-          rgba(223, 255, 79, 0.12),
-          transparent 25%
-        ),
-        var(--bg-primary);
-    }
-
-    .hero-content {
-      max-width: 760px;
-    }
-
     h1,
     h2,
     h3,
@@ -163,60 +155,41 @@
       margin-top: 0;
     }
 
-    h1 {
-      max-width: 720px;
-      margin-bottom: var(--space-5);
+    h1,
+    h2 {
       font-family: "Space Grotesk", sans-serif;
-      font-size: clamp(2.8rem, 7vw, 5.6rem);
       font-weight: 600;
-      letter-spacing: -0.07em;
-      line-height: 0.96;
+      letter-spacing: -0.06em;
+      line-height: 1.04;
     }
 
-    h1 span {
+    h1 {
+      margin-bottom: var(--space-4);
+      font-size: clamp(2.65rem, 13vw, 4.5rem);
+    }
+
+    h1 .accent-text {
       color: var(--accent);
     }
 
-    .hero-description {
-      max-width: 620px;
-      margin-bottom: var(--space-6);
-      color: var(--text-muted);
-      font-size: 1.08rem;
-    }
-
-    .course-meta {
-      display: flex;
-      flex-wrap: wrap;
-      gap: var(--space-3);
-      margin-bottom: var(--space-6);
-    }
-
-    .meta-item {
-      padding: 9px 12px;
-      border: 1px solid var(--border);
-      border-radius: var(--radius-full);
-      background: rgba(16, 24, 29, 0.45);
-      color: var(--text-muted);
-      font-family: "IBM Plex Mono", monospace;
-      font-size: 0.75rem;
-    }
-
-    .meta-item strong {
-      color: var(--text-main);
-      font-weight: 500;
+    h2 {
+      margin-bottom: var(--space-3);
+      font-size: clamp(1.9rem, 8vw, 2.7rem);
     }
 
     .button {
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      min-height: 48px;
-      padding: 0 20px;
+      min-height: 50px;
+      width: 100%;
+      padding: 0 var(--space-5);
       border: 1px solid transparent;
       border-radius: var(--radius-sm);
       font-family: "Manrope", sans-serif;
       font-size: 0.9rem;
       font-weight: 800;
+      text-align: center;
       transition: transform 160ms ease, background 160ms ease;
     }
 
@@ -233,33 +206,178 @@
       background: #e8ff85;
     }
 
-    /* Information section */
-    .details {
-      padding: var(--space-8) 0;
+    /* Hero */
+    .hero {
+      overflow: hidden;
+      padding: var(--space-7) 0;
+      border-bottom: 1px solid var(--border);
+      background:
+        radial-gradient(
+          circle at 100% 0%,
+          rgba(223, 255, 79, 0.12),
+          transparent 34%
+        ),
+        var(--bg-primary);
+    }
+
+    .hero-copy {
+      max-width: 720px;
+    }
+
+    .hero-description {
+      max-width: 590px;
+      margin-bottom: var(--space-5);
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .course-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-2);
+      margin-bottom: var(--space-5);
+    }
+
+    .meta-chip {
+      padding: 8px 10px;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-full);
+      background: rgba(16, 24, 29, 0.42);
+      color: var(--text-muted);
+      font-family: "IBM Plex Mono", monospace;
+      font-size: 0.68rem;
+      line-height: 1.2;
+    }
+
+    .meta-chip strong {
+      color: var(--text-main);
+      font-weight: 500;
+    }
+
+    /* Screenshot section */
+    .project-section {
+      padding: var(--space-7) 0;
       background: var(--bg-plain);
     }
 
-    .details-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: var(--space-7);
+    .project-section .section-intro {
+      max-width: 640px;
+      margin-bottom: var(--space-5);
     }
 
-    h2 {
-      margin-bottom: var(--space-3);
-      font-family: "Space Grotesk", sans-serif;
-      font-size: clamp(1.9rem, 4vw, 2.7rem);
-      font-weight: 600;
-      letter-spacing: -0.055em;
-      line-height: 1.08;
-    }
-
-    .section-copy {
-      max-width: 500px;
+    .section-intro p {
+      margin-bottom: 0;
       color: var(--text-muted);
+      font-size: 0.96rem;
     }
 
-    .learn-list {
+    .project-preview {
+      overflow: hidden;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      background: var(--bg-darkest);
+    }
+
+    .browser-bar {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      min-height: 40px;
+      padding: 0 var(--space-4);
+      border-bottom: 1px solid var(--border);
+      background: #10181d;
+    }
+
+    .browser-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: var(--radius-full);
+      background: #46545e;
+    }
+
+    .browser-dot:first-child {
+      background: #dfff4f;
+    }
+
+    .browser-label {
+      margin-left: var(--space-2);
+      overflow: hidden;
+      color: var(--text-muted);
+      font-family: "IBM Plex Mono", monospace;
+      font-size: 0.65rem;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .project-image-wrap {
+      position: relative;
+      min-height: 220px;
+      aspect-ratio: 16 / 10;
+      background:
+        linear-gradient(rgba(16, 24, 29, 0.76), rgba(16, 24, 29, 0.76)),
+        repeating-linear-gradient(
+          90deg,
+          transparent 0,
+          transparent 39px,
+          rgba(42, 56, 66, 0.35) 40px
+        ),
+        repeating-linear-gradient(
+          0deg,
+          transparent 0,
+          transparent 39px,
+          rgba(42, 56, 66, 0.35) 40px
+        );
+    }
+
+    .project-image-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .image-placeholder {
+      position: absolute;
+      inset: 0;
+      display: grid;
+      place-items: center;
+      padding: var(--space-5);
+      color: var(--text-muted);
+      font-family: "IBM Plex Mono", monospace;
+      font-size: 0.75rem;
+      line-height: 1.7;
+      text-align: center;
+    }
+
+    .image-placeholder code {
+      color: var(--accent);
+      font-family: inherit;
+    }
+
+    /*
+      IMPORTANT:
+      After adding your screenshot, delete the .image-placeholder div below.
+      Keep the <img> element and change its src if you use another filename.
+    */
+
+    /* Learning section */
+    .details {
+      padding: var(--space-7) 0;
+      border-top: 1px solid var(--border);
+      background: var(--bg-primary);
+    }
+
+    .details-copy {
+      max-width: 600px;
+      margin-bottom: var(--space-6);
+    }
+
+    .details-copy p {
+      margin-bottom: 0;
+      color: var(--text-muted);
+      font-size: 0.96rem;
+    }
+
+    .learning-list {
       display: grid;
       gap: var(--space-3);
       margin: 0;
@@ -267,113 +385,64 @@
       list-style: none;
     }
 
-    .learn-list li {
+    .learning-list li {
       position: relative;
       padding: var(--space-4) var(--space-5) var(--space-4) 52px;
       border: 1px solid var(--border);
       border-radius: var(--radius-md);
       background: var(--bg-deep);
       color: var(--text-main);
-      font-size: 0.93rem;
-      font-weight: 600;
+      font-size: 0.9rem;
+      font-weight: 700;
     }
 
-    .learn-list li::before {
+    .learning-list li::before {
       position: absolute;
       top: 16px;
       left: 20px;
+      color: var(--accent);
       content: "✓";
-      color: var(--accent);
       font-family: "IBM Plex Mono", monospace;
-      font-weight: 500;
-    }
-
-    /* Simple course plan */
-    .plan {
-      padding: var(--space-8) 0;
-      border-top: 1px solid var(--border);
-      border-bottom: 1px solid var(--border);
-      background: var(--bg-primary);
-    }
-
-    .plan-heading {
-      max-width: 600px;
-      margin-bottom: var(--space-6);
-    }
-
-    .plan-heading p {
-      margin-bottom: 0;
-      color: var(--text-muted);
-    }
-
-    .day-list {
-      border-top: 1px solid var(--border);
-    }
-
-    .day-item {
-      display: grid;
-      grid-template-columns: 95px 1fr;
-      gap: var(--space-5);
-      padding: var(--space-4) 0;
-      border-bottom: 1px solid var(--border);
-    }
-
-    .day-label {
-      color: var(--accent);
-      font-family: "IBM Plex Mono", monospace;
-      font-size: 0.74rem;
-      font-weight: 500;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-    }
-
-    .day-content h3 {
-      margin-bottom: var(--space-1);
-      font-family: "Manrope", sans-serif;
-      font-size: 0.97rem;
-      font-weight: 800;
-    }
-
-    .day-content p {
-      margin-bottom: 0;
-      color: var(--text-muted);
-      font-size: 0.9rem;
+      font-size: 0.85rem;
     }
 
     /* CTA */
-    .cta {
-      padding: var(--space-8) 0;
+    .cta-section {
+      padding: var(--space-7) 0;
+      border-top: 1px solid var(--border);
       background: var(--bg-darkest);
     }
 
-    .cta-box {
-      padding: var(--space-7);
+    .cta-card {
+      padding: var(--space-5);
       border: 1px solid var(--border);
       border-radius: var(--radius-lg);
       background:
         radial-gradient(
-          circle at 92% 18%,
+          circle at 100% 0%,
           rgba(223, 255, 79, 0.14),
-          transparent 28%
+          transparent 34%
         ),
         var(--bg-primary);
     }
 
-    .cta-box h2 {
-      max-width: 640px;
+    .cta-card h2 {
+      max-width: 620px;
     }
 
-    .cta-box p {
-      max-width: 610px;
+    .cta-card p {
+      max-width: 570px;
       margin-bottom: var(--space-5);
       color: var(--text-muted);
+      font-size: 0.96rem;
     }
 
     .cta-note {
       display: block;
       margin-top: var(--space-3);
       color: var(--text-muted);
-      font-size: 0.78rem;
+      font-family: "IBM Plex Mono", monospace;
+      font-size: 0.67rem;
     }
 
     /* Footer */
@@ -385,68 +454,94 @@
 
     .footer-inner {
       display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: var(--space-4);
+      flex-direction: column;
+      gap: var(--space-2);
     }
 
     .footer p,
     .footer a {
       margin: 0;
       color: var(--text-muted);
-      font-size: 0.78rem;
+      font-size: 0.75rem;
     }
 
     .footer a:hover {
       color: var(--accent);
     }
 
-    @media (max-width: 700px) {
+    /* Tablet and desktop enhancements */
+    @media (min-width: 640px) {
       .container {
-        width: min(calc(100% - 28px), var(--container));
+        width: min(calc(100% - 48px), var(--container-width));
+      }
+
+      .header-inner {
+        min-height: 72px;
+      }
+
+      .back-link {
+        font-size: 0.84rem;
+      }
+
+      .button {
+        width: auto;
       }
 
       .hero {
         padding: var(--space-8) 0;
       }
 
+      .project-section,
       .details,
-      .plan,
-      .cta {
-        padding: var(--space-7) 0;
+      .cta-section {
+        padding: var(--space-8) 0;
       }
 
-      .details-grid {
-        grid-template-columns: 1fr;
-        gap: var(--space-6);
-      }
-
-      .cta-box {
-        padding: var(--space-5);
-      }
-
-      .day-item {
-        grid-template-columns: 70px 1fr;
-        gap: var(--space-3);
+      .cta-card {
+        padding: var(--space-7);
       }
 
       .footer-inner {
-        flex-direction: column;
-        align-items: flex-start;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+      }
+    }
+
+    @media (min-width: 840px) {
+      .hero {
+        padding: var(--space-9) 0;
+      }
+
+      .project-section,
+      .details,
+      .cta-section {
+        padding: var(--space-9) 0;
+      }
+
+      .details-layout {
+        display: grid;
+        grid-template-columns: minmax(260px, 0.8fr) minmax(380px, 1.2fr);
+        gap: var(--space-8);
+        align-items: start;
+      }
+
+      .details-copy {
+        margin-bottom: 0;
+      }
+
+      .learning-list {
+        grid-template-columns: 1fr 1fr;
       }
     }
   </style>
 </head>
 
 <body>
-  <header class="header">
+  <header class="site-header">
     <div class="container header-inner">
-      <a href="https://enrole.gm/" class="logo" aria-label="Enrole home">
-        Enrole<span class="logo-dot">.</span>
-      </a>
-
-      <a href="https://enrole.gm/" class="back-link">
-        ← Back to Enrole.
+      <a href="https://enrole.gm/" class="wordmark" aria-label="Enrole home">
+        Enrole<span>.</span>
       </a>
     </div>
   </header>
@@ -454,27 +549,28 @@
   <main>
     <section class="hero">
       <div class="container">
-        <div class="hero-content">
+        <div class="hero-copy">
           <span class="eyebrow">Enrole. Learning</span>
 
           <h1>
             Introduction<br />
-            to <span>Coding.</span>
+            to <span class="accent-text">Coding.</span>
           </h1>
 
           <p class="hero-description">
-            A simple one-week introduction for anyone who wants to understand
-            coding, how websites work, and how to begin their tech journey.
+            A one-week, text-based WhatsApp class for beginners who want to
+            understand coding, how websites work, and how to take their first
+            step into technology.
           </p>
 
           <div class="course-meta">
-            <span class="meta-item"><strong>Duration:</strong> 1 Week</span>
-            <span class="meta-item"><strong>Fee:</strong> D150</span>
-            <span class="meta-item"><strong>Platform:</strong> WhatsApp</span>
-            <span class="meta-item"><strong>Level:</strong> Beginner</span>
+            <span class="meta-chip"><strong>Duration:</strong> 1 week</span>
+            <span class="meta-chip"><strong>Fee:</strong> D150</span>
+            <span class="meta-chip"><strong>Platform:</strong> WhatsApp</span>
+            <span class="meta-chip"><strong>Level:</strong> Beginner</span>
           </div>
 
-          <!-- Replace 220XXXXXXXX with your WhatsApp number -->
+          <!-- Replace 220XXXXXXXX with your actual WhatsApp number -->
           <a
             class="button button-primary"
             href="https://wa.me/2207005974?text=Hello%20Enrole.%20I%20would%20like%20to%20register%20for%20the%20Introduction%20to%20Coding%20class.%0A%0AName%3A%0AWhatsApp%20Number%3A%0ADo%20you%20have%20a%20laptop%3F%20Yes%20%2F%20No%0AHave%20you%20coded%20before%3F%20Yes%20%2F%20No"
@@ -487,27 +583,67 @@
       </div>
     </section>
 
-    <section class="details">
-      <div class="container details-grid">
-        <div>
-          <span class="eyebrow">The course</span>
-          <h2>Start with the basics.</h2>
+    <section class="project-section">
+      <div class="container">
+        <div class="section-intro">
+          <span class="eyebrow">Build real things</span>
 
-          <p class="section-copy">
-            This is not a full software-development course. It is a friendly,
-            practical first step for beginners who want clarity before deciding
-            whether coding is the right path for them.
-          </p>
+          <h2>Code is used to solve problems.</h2>
 
-          <p class="section-copy">
-            Lessons are sent as simple text through WhatsApp. No video calls,
-            no camera, and no previous coding experience required.
+          <p>
+            During the class, you will see how developers use code to build
+            real websites, applications, and digital systems.
           </p>
         </div>
 
-        <ul class="learn-list">
+        <div class="project-preview">
+          <div class="browser-bar" aria-hidden="true">
+            <span class="browser-dot"></span>
+            <span class="browser-dot"></span>
+            <span class="browser-dot"></span>
+            <span class="browser-label">enrole.gm — project preview</span>
+          </div>
+
+          <div class="project-image-wrap">
+            <!--
+              PLACEHOLDER IMAGE:
+              1. Create this folder: assets
+              2. Add your screenshot as: project-preview.jpg
+              3. The final path will be:
+                 /courses/introduction-to-coding/assets/project-preview.jpg
+              4. Delete the .image-placeholder div after your image is ready.
+            -->
+            <img
+              src="assets/project-preview.jpg"
+              alt="Screenshot of a project built by Enrole."
+              width="1600"
+              height="1000"
+              loading="lazy"
+            />
+
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="details">
+      <div class="container details-layout">
+        <div class="details-copy">
+          <span class="eyebrow">What you will learn</span>
+
+          <h2>Start with the foundations.</h2>
+
+          <p>
+            This is a beginner introduction, not a full programming course.
+            You will gain clarity, try simple code, and know where to continue
+            if you decide coding is for you.
+          </p>
+        </div>
+
+        <ul class="learning-list">
           <li>What coding is and what programmers build</li>
-          <li>How websites and apps work</li>
+          <li>How websites and mobile apps work</li>
           <li>Frontend, backend, and databases explained</li>
           <li>The basic tools developers use</li>
           <li>Introduction to HTML and CSS</li>
@@ -516,89 +652,19 @@
       </div>
     </section>
 
-    <section class="plan">
+    <section class="cta-section">
       <div class="container">
-        <div class="plan-heading">
-          <span class="eyebrow">One-week plan</span>
-          <h2>A clear first roadmap.</h2>
-          <p>
-            Short written lessons, easy tasks, and help through WhatsApp.
-          </p>
-        </div>
-
-        <div class="day-list">
-          <article class="day-item">
-            <span class="day-label">Day 01</span>
-            <div class="day-content">
-              <h3>What is coding?</h3>
-              <p>Understand software, websites, apps, and the work of programmers.</p>
-            </div>
-          </article>
-
-          <article class="day-item">
-            <span class="day-label">Day 02</span>
-            <div class="day-content">
-              <h3>Technology career paths</h3>
-              <p>Explore frontend, backend, mobile development, UI/UX, and more.</p>
-            </div>
-          </article>
-
-          <article class="day-item">
-            <span class="day-label">Day 03</span>
-            <div class="day-content">
-              <h3>How websites work</h3>
-              <p>Learn the simple roles of frontend, backend, databases, and hosting.</p>
-            </div>
-          </article>
-
-          <article class="day-item">
-            <span class="day-label">Day 04</span>
-            <div class="day-content">
-              <h3>Developer tools</h3>
-              <p>Get introduced to code editors, browsers, files, and project folders.</p>
-            </div>
-          </article>
-
-          <article class="day-item">
-            <span class="day-label">Day 05</span>
-            <div class="day-content">
-              <h3>HTML basics</h3>
-              <p>Create the content and structure of your first simple webpage.</p>
-            </div>
-          </article>
-
-          <article class="day-item">
-            <span class="day-label">Day 06</span>
-            <div class="day-content">
-              <h3>CSS basics</h3>
-              <p>Add colours, spacing, fonts, and simple styling to your page.</p>
-            </div>
-          </article>
-
-          <article class="day-item">
-            <span class="day-label">Day 07</span>
-            <div class="day-content">
-              <h3>Your next steps</h3>
-              <p>Complete your mini task and receive a clear roadmap for continuing.</p>
-            </div>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section class="cta">
-      <div class="container">
-        <div class="cta-box">
+        <div class="cta-card">
           <span class="eyebrow">Start here</span>
 
           <h2>Ready to understand coding?</h2>
 
           <p>
-            Register through WhatsApp to receive payment details and confirm
-            your place in the next Introduction to Coding class.
+            Register through WhatsApp. You will receive payment details and
+            class-group information after confirming your place.
           </p>
 
-          <!-- Replace 220XXXXXXXX with your WhatsApp number -->
+          <!-- Replace 220XXXXXXXX with your actual WhatsApp number -->
           <a
             class="button button-primary"
             href="https://wa.me/2207005974?text=Hello%20Enrole.%20I%20would%20like%20to%20register%20for%20the%20Introduction%20to%20Coding%20class.%0A%0AName%3A%0AWhatsApp%20Number%3A%0ADo%20you%20have%20a%20laptop%3F%20Yes%20%2F%20No%0AHave%20you%20coded%20before%3F%20Yes%20%2F%20No"
@@ -609,7 +675,7 @@
           </a>
 
           <span class="cta-note">
-            D150 · One week · Text-based WhatsApp lessons
+            D150 · One week · Text-based WhatsApp lessons · No video calls
           </span>
         </div>
       </div>
